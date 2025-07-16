@@ -34,8 +34,7 @@ export default function Header() {
             className={`object-contain mr-3 transition-all duration-500 ease-in-out ${scrolled ? 'w-16 h-16' : 'w-24 h-24'}`}
           />
           <div>
-            <span className="block font-bold text-2xl text-[#49594b] leading-tight">[NEW CLIENT NAME]</span>
-            <span className="block font-bold text-2xl text-[#49594b] leading-tight">[NEW LOGO SUBTITLE]</span>
+            <span className="block font-bold text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
           </div>
         </div>
         {/* Centered Navigation */}

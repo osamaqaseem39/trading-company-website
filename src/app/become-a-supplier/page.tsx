@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 
-const API_URL = "https://punjabac-admin.vercel.app/api/suppliers";
+const API_URL = "https://trading-company-bcyf.vercel.app/api/suppliers";
 
 export default function BecomeASupplierPage() {
   const [form, setForm] = useState({

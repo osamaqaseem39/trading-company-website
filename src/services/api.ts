@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = 'https://punjabac-admin.vercel.app/api';
-const ADMIN_BASE_URL = 'https://punjabac.osamaqaseem.online';
+const API_BASE_URL = 'https://trading-company-bcyf.vercel.app/api';
+const ADMIN_BASE_URL = 'https://server.wingzimpex.com';
 
 // Create and export an Axios instance for API calls
 export const api = axios.create({
@@ -29,6 +29,8 @@ export interface Product {
   gallery?: string[];
   createdAt: string;
   updatedAt: string;
+  category?: string;
+  brand?: string;
 }
 
 export interface Service {

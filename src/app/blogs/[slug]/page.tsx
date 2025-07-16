@@ -13,7 +13,7 @@ interface Blog {
 
 async function fetchBlog(slug: string): Promise<Blog | null> {
   try {
-    const res = await axios.get(`https://punjabac-admin.vercel.app/api/blogs/${slug}`);
+    const res = await axios.get(`https://trading-company-bcyf.vercel.app/api/blogs/${slug}`);
     const data = res.data;
     return data.status === 'published' ? data : null;
   } catch (error) {
@@ -50,7 +50,7 @@ function formatBlogContent(text: string) {
 
 export async function generateStaticParams() {
   try {
-    const res = await axios.get('https://punjabac-admin.vercel.app/api/blogs');
+    const res = await axios.get('https://trading-company-bcyf.vercel.app/api/blogs');
     const blogs = res.data;
     return (blogs || [])
       .filter((blog: any) => blog.status === 'published')

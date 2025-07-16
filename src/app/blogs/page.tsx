@@ -16,7 +16,7 @@ interface Blog {
 
 async function fetchBlogs(): Promise<Blog[]> {
   try {
-    const res = await axios.get('https://punjabac-admin.vercel.app/api/blogs');
+    const res = await axios.get('https://trading-company-bcyf.vercel.app/api/blogs');
     const data = res.data;
     return Array.isArray(data) ? data.filter((b) => b.status === 'published') : [];
   } catch (error) {
