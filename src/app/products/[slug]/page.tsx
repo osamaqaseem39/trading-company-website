@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import AutoCompanies from '../../../components/AutoCompanies';
-import ProductDescription from '../../../components/ProductDescription';
+import ReactMarkdown from 'react-markdown';
 import ProductImageGallery from '../../../components/ProductImageGallery';
 import { productsApi, brandsApi, categoriesApi } from '../../../services/api';
 import Brands from '../../../components/Brands';
@@ -113,7 +113,9 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
                   {product.title}
                 </h1>
 
-                <ProductDescription description={product.description} />
+                <div className="prose max-w-none mb-8">
+                  <ReactMarkdown>{product.description || ''}</ReactMarkdown>
+                </div>
 
                 {/* Product Meta */}
                 <div className="space-y-4 mb-8">
@@ -135,18 +137,12 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="/contact" className="flex-1 bg-wingzimpex-brand text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center hover:bg-wingzimpex-brand-light focus:outline-none focus:ring-2 focus:ring-wingzimpex-brand">
+                  <a href="/contact" className="flex-1 bg-[#405a4d] text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center hover:bg-[#2d2d2d] focus:outline-none focus:ring-2 focus:ring-[#405a4d]">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     Contact for Quote
                   </a>
-                  <button className="px-6 py-3 border-2 border-wingzimpex-brand text-wingzimpex-brand rounded-lg font-semibold hover:bg-wingzimpex-brand/10 transition-colors flex items-center justify-center">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                    Save
-                  </button>
                 </div>
 
                 {/* Product Features */}
@@ -180,14 +176,16 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
       </section>
 
       {/* Our Brands Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-[#2d2d2d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Brands />
         </div>
       </section>
 
       {/* Contact Us Section */}
-      <ContactSection />
+      <section className="py-12 bg-white">
+        <ContactSection />
+      </section>
     </main>
   );
 } 

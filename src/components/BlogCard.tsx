@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import Link from "next/link";
 
 interface Blog {
@@ -68,12 +69,15 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <h2 className="text-2xl font-bold mb-2 line-clamp-2 group-hover:text-wingzimpex-brand transition-colors">
           {blog.title}
         </h2>
-        <p className="text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem]">
-          {(() => {
-            const clean = blog.content.replace(/<[^>]+>/g, '');
-            return clean.length > 150 ? clean.slice(0, 150) + '...' : clean;
-          })()}
-        </p>
+        <div className="text-gray-600 mb-4 line-clamp-3 min-h-[4.5rem] prose prose-sm max-w-none">
+          <ReactMarkdown>
+            {(() => {
+              // Strip markdown to plain text for preview, then limit to 150 chars
+              const plain = blog.content.replace(/[#_*`>\[\]\(\)!\-]/g, '');
+              return plain.length > 150 ? plain.slice(0, 150) + '...' : plain;
+            })()}
+          </ReactMarkdown>
+        </div>
         <span className="block mb-2 text-xs text-gray-400">{new Date(blog.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
         <Link
           href={`/blogs/${blog.slug}`}
