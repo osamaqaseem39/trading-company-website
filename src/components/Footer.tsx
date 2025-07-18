@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { productsApi, Product, categoriesApi, Category } from '../services/api';
+import { productsApi, Product, categoriesApi, Category, subcategoryApi } from '../services/api';
 
 export default function Footer() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [subcategories, setSubcategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -16,12 +16,12 @@ export default function Footer() {
       setProducts(data.slice(0, 6));
       setLoadingProducts(false);
     };
-    const fetchCategories = async () => {
-      const cats = await categoriesApi.getAll();
-      setCategories(cats.filter(cat => !cat.parent).slice(0, 6));
+    const fetchSubcategories = async () => {
+      const subs = await subcategoryApi.getAll();
+      setSubcategories(subs.slice(0, 6));
     };
     fetchProducts();
-    fetchCategories();
+    fetchSubcategories();
   }, []);
 
   return (
@@ -70,17 +70,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Categories (dynamic) */}
+          {/* Subcategories (dynamic) */}
           <div className="min-w-[180px]">
             <h3 className="text-lg font-semibold mb-6">Categories</h3>
             <ul className="space-y-3">
-              {categories.length === 0 ? (
+              {subcategories.length === 0 ? (
                 <li className="text-[#2d2d2d]">Loading...</li>
               ) : (
-                categories.map(cat => (
-                  <li key={cat._id}>
-                    <Link href={`/categories/${cat.name.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}-${cat._id}`} className="text-[#2d2d2d] hover:text-white transition-colors">
-                      {cat.name}
+                subcategories.map(subcat => (
+                  <li key={subcat._id}>
+                    <Link href={`/subcategories/${subcat.slug || (subcat.name.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-') + '-' + subcat._id)}`} className="text-[#2d2d2d] hover:text-white transition-colors">
+                      {subcat.name}
                     </Link>
                   </li>
                 ))
