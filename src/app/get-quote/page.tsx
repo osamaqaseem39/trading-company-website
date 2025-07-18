@@ -56,7 +56,7 @@ export default function GetQuotePage() {
   return (
     <main className="min-h-screen bg-gray-50 py-16 px-4">
       <div className="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-punjabac-brand mb-6 text-center">Get a Quote</h1>
+        <h1 className="text-3xl font-bold text-wingzimpex-brand mb-6 text-center">Get a Quote</h1>
         <form onSubmit={handleSubmit} className="space-y-6" encType="multipart/form-data">
           <div>
             <label className="block text-gray-700 font-medium mb-1">Name *</label>
@@ -66,7 +66,7 @@ export default function GetQuotePage() {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-punjabac-brand focus:border-punjabac-brand"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-wingzimpex-brand focus:border-wingzimpex-brand"
             />
           </div>
           <div>
@@ -77,7 +77,7 @@ export default function GetQuotePage() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-punjabac-brand focus:border-punjabac-brand"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-wingzimpex-brand focus:border-wingzimpex-brand"
             />
           </div>
           <div>
@@ -88,7 +88,7 @@ export default function GetQuotePage() {
               value={form.phone}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-punjabac-brand focus:border-punjabac-brand"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-wingzimpex-brand focus:border-wingzimpex-brand"
             />
           </div>
           <div>
@@ -99,7 +99,7 @@ export default function GetQuotePage() {
               onChange={handleChange}
               required
               rows={4}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-punjabac-brand focus:border-punjabac-brand"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-wingzimpex-brand focus:border-wingzimpex-brand"
             />
           </div>
           <div>
@@ -117,7 +117,7 @@ export default function GetQuotePage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-punjabac-brand text-white font-semibold py-3 rounded-lg hover:bg-punjabac-brand-light transition-colors"
+            className="w-full bg-wingzimpex-brand text-white font-semibold py-3 rounded-lg hover:bg-wingzimpex-brand-light transition-colors"
           >
             {loading ? "Submitting..." : "Submit Quote Request"}
           </button>

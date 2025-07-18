@@ -125,71 +125,113 @@ export default function BecomeASupplierPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-2">Become a Supplier</h1>
-      <p className="mb-6 text-gray-600">Complete the form below and we’ll get back to you as soon as possible.</p>
-      {success && <div className="mb-4 p-3 bg-green-100 text-green-700 rounded">Thank you! We’ll get back to you soon.</div>}
-      {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">{error}</div>}
-      <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input name="firstName" value={form.firstName} onChange={handleChange} required placeholder="First Name" className="input" />
-          <input name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Last Name" className="input" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email Address*" className="input" />
-          <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone Number*" className="input" />
-        </div>
-        <input name="companyName" value={form.companyName} onChange={handleChange} required placeholder="Company Name*" className="input" />
-        <input name="jobTitle" value={form.jobTitle} onChange={handleChange} required placeholder="Job Title*" className="input" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input name="addressStreet" value={form.addressStreet} onChange={handleChange} required placeholder="Street Address" className="input" />
-          <input name="addressCity" value={form.addressCity} onChange={handleChange} required placeholder="City" className="input" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input name="addressZip" value={form.addressZip} onChange={handleChange} required placeholder="ZIP / Postal Code" className="input" />
-          <input name="addressCountry" value={form.addressCountry} onChange={handleChange} required placeholder="Country" className="input" />
-        </div>
-        <textarea name="ingredientsSupplied" value={form.ingredientsSupplied} onChange={handleChange} required placeholder="What ingredients do you supply?*" className="input" rows={2} />
-        <textarea name="foodSafetyAccreditations" value={form.foodSafetyAccreditations} onChange={handleChange} required placeholder="Please confirm your food safety accreditation(s)*" className="input" rows={2} />
-        <div>
-          <label className="block font-medium mb-1">Brochure or Presentation Upload</label>
-          <div
-            className="border-2 border-dashed rounded p-4 text-center cursor-pointer bg-gray-50 hover:bg-gray-100"
-            onDrop={handleDrop}
-            onDragOver={handleDragOver}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            {brochure ? (
-              <span>{brochure.name}</span>
-            ) : (
-              <span>Drag & drop or click to browse<br />No file chosen<br />Max. file size: 300 MB.</span>
-            )}
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50 min-h-screen">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-2 text-center text-green-800">Become a Supplier</h1>
+        <p className="mb-8 text-lg text-gray-700 text-center max-w-xl mx-auto">
+          Join our trusted network of suppliers. Complete the form below and our team will get back to you as soon as possible.
+        </p>
+        {success && <div className="mb-4 p-3 bg-green-100 text-green-700 rounded text-center font-semibold">Thank you! We’ll get back to you soon.</div>}
+        {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded text-center font-semibold">{error}</div>}
+        <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+              <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="First Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+              <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Last Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
           </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".pdf,.doc,.docx,.ppt,.pptx"
-            className="hidden"
-            onChange={handleFileChange}
-          />
-          {uploadError && <div className="text-red-600 text-sm mt-1">{uploadError}</div>}
-        </div>
-        <input name="website" value={form.website} onChange={handleChange} placeholder="Website (https://)" className="input" />
-        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Message*" className="input" rows={3} />
-        <div className="flex items-center">
-          <input type="checkbox" name="newsletterSubscribed" checked={form.newsletterSubscribed} onChange={handleChange} className="mr-2" />
-          <label htmlFor="newsletterSubscribed">Subscribe to our newsletter?</label>
-        </div>
-        <div className="text-xs text-gray-500 mb-2">By sending us your information, you agree to our Privacy Policy.</div>
-        <button type="submit" className="bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition" disabled={submitting}>{submitting ? "Submitting..." : "Submit"}</button>
-      </form>
-    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+              <input id="email" name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+              <input id="phone" name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone Number" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-1">Company Name*</label>
+            <input id="companyName" name="companyName" value={form.companyName} onChange={handleChange} required placeholder="Company Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+          </div>
+          <div>
+            <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-1">Job Title*</label>
+            <input id="jobTitle" name="jobTitle" value={form.jobTitle} onChange={handleChange} required placeholder="Job Title" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="addressStreet" className="block text-sm font-medium text-gray-700 mb-1">Street Address*</label>
+              <input id="addressStreet" name="addressStreet" value={form.addressStreet} onChange={handleChange} required placeholder="Street Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+            <div>
+              <label htmlFor="addressCity" className="block text-sm font-medium text-gray-700 mb-1">City*</label>
+              <input id="addressCity" name="addressCity" value={form.addressCity} onChange={handleChange} required placeholder="City" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="addressZip" className="block text-sm font-medium text-gray-700 mb-1">ZIP / Postal Code*</label>
+              <input id="addressZip" name="addressZip" value={form.addressZip} onChange={handleChange} required placeholder="ZIP / Postal Code" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+            <div>
+              <label htmlFor="addressCountry" className="block text-sm font-medium text-gray-700 mb-1">Country*</label>
+              <input id="addressCountry" name="addressCountry" value={form.addressCountry} onChange={handleChange} required placeholder="Country" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="ingredientsSupplied" className="block text-sm font-medium text-gray-700 mb-1">What ingredients do you supply?*</label>
+            <textarea id="ingredientsSupplied" name="ingredientsSupplied" value={form.ingredientsSupplied} onChange={handleChange} required placeholder="What ingredients do you supply?" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" rows={2} />
+          </div>
+          <div>
+            <label htmlFor="foodSafetyAccreditations" className="block text-sm font-medium text-gray-700 mb-1">Please confirm your food safety accreditation(s)*</label>
+            <textarea id="foodSafetyAccreditations" name="foodSafetyAccreditations" value={form.foodSafetyAccreditations} onChange={handleChange} required placeholder="Please confirm your food safety accreditation(s)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" rows={2} />
+          </div>
+          <div>
+            <label className="block font-medium mb-1">Brochure or Presentation Upload</label>
+            <div
+              className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer bg-gray-50 hover:bg-green-50 transition mb-2"
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onClick={() => fileInputRef.current?.click()}
+              tabIndex={0}
+              role="button"
+              aria-label="Upload brochure or presentation"
+            >
+              {brochure ? (
+                <span className="font-medium text-green-800">{brochure.name}</span>
+              ) : (
+                <span className="text-gray-500">Drag & drop or click to browse<br />No file chosen<br />Max. file size: 300 MB.</span>
+              )}
+            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".pdf,.doc,.docx,.ppt,.pptx"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+            {uploadError && <div className="text-red-600 text-sm mt-1">{uploadError}</div>}
+          </div>
+          <div>
+            <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">Website</label>
+            <input id="website" name="website" value={form.website} onChange={handleChange} placeholder="Website (https://)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+            <textarea id="message" name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" rows={3} />
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="newsletterSubscribed" name="newsletterSubscribed" checked={form.newsletterSubscribed} onChange={handleChange} className="mr-2" />
+            <label htmlFor="newsletterSubscribed" className="text-sm">Subscribe to our newsletter?</label>
+          </div>
+          <div className="text-xs text-gray-500 mb-2">By sending us your information, you agree to our Privacy Policy.</div>
+          <button type="submit" className="bg-green-700 text-white px-8 py-3 rounded font-semibold hover:bg-green-800 transition w-full mt-2" disabled={submitting}>{submitting ? "Submitting..." : "Submit"}</button>
+        </form>
+      </div>
+    </section>
   );
-}
-
-// Add some basic input styling
-type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
-const inputClass = "w-full border rounded px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-green-200";
-export function Input(props: InputProps) {
-  return <input {...props} className={inputClass + (props.className ? " " + props.className : "")}/>;
 } 

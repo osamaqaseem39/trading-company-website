@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { productsApi, Product } from '../services/api';
+import { productsApi, brandsApi, categoriesApi, Product, Brand, Category } from '../services/api';
 import ProductCard from './ProductCard';
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [brandMap, setBrandMap] = useState<Record<string, string>>({});
+  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,8 +21,23 @@ const Products = () => {
         setLoading(false);
       }
     };
+    const fetchBrandsAndCategories = async () => {
+      try {
+        const [brands, categories] = await Promise.all([
+          brandsApi.getAll(),
+          categoriesApi.getAll(),
+        ]);
+        console.log('Brands:', brands);
+        console.log('Categories:', categories);
+        setBrandMap(Object.fromEntries(brands.map(b => [b._id, b.name])));
+        setCategoryMap(Object.fromEntries(categories.map(c => [c._id, c.name])));
+      } catch (error) {
+        console.error('Error fetching brands or categories:', error);
+      }
+    };
 
     fetchProducts();
+    fetchBrandsAndCategories();
   }, []);
 
   return (
@@ -35,7 +52,7 @@ const Products = () => {
           </p>
         </div>
         
-        {loading ? (
+        {loading || Object.keys(brandMap).length === 0 || Object.keys(categoryMap).length === 0 ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
           </div>
@@ -50,6 +67,8 @@ const Products = () => {
                 showGalleryCount={false}
                 showCategoryBadge={false}
                 showHoverEffects={false}
+                brandMap={brandMap}
+                categoryMap={categoryMap}
               />
             ))}
           </div>

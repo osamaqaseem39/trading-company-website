@@ -89,7 +89,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
       className={`space-y-6 bg-white rounded-xl shadow-lg p-8 ${className}`}
       encType="multipart/form-data"
     >
-      {title && <h2 className="text-2xl font-bold text-punjabac-brand mb-4 text-center">{title}</h2>}
+      {title && <h2 className="text-2xl font-bold text-wingzimpex-brand mb-4 text-center">{title}</h2>}
       
       <div className={getGridClasses()}>
         <div>
@@ -101,7 +101,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
             onChange={handleChange}
             required
             placeholder="Enter your full name"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-punjabac-brand focus:border-transparent text-left"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wingzimpex-brand focus:border-transparent text-left"
           />
         </div>
         <div>
@@ -113,7 +113,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
             onChange={handleChange}
             required
             placeholder="Enter your email address"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-punjabac-brand focus:border-transparent text-left"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wingzimpex-brand focus:border-transparent text-left"
           />
         </div>
         <div>
@@ -125,7 +125,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
             onChange={handleChange}
             required
             placeholder="Enter your phone number"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-punjabac-brand focus:border-transparent text-left"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wingzimpex-brand focus:border-transparent text-left"
           />
         </div>
         <div>
@@ -137,7 +137,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
             required
             rows={3}
             placeholder="Describe your project requirements, specifications, or any specific needs..."
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-punjabac-brand focus:border-transparent text-left h-[90px] min-h-[90px] resize-y"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wingzimpex-brand focus:border-transparent text-left h-[90px] min-h-[90px] resize-y"
           />
         </div>
       </div>
@@ -147,7 +147,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-punjabac-brand text-white py-3 px-6 rounded-lg font-semibold hover:bg-punjabac-brand-light transition-colors text-left mt-2"
+        className="w-full bg-[#405a4d] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors text-left mt-2"
       >
         {loading ? "Submitting..." : buttonText}
       </button>

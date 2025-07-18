@@ -11,6 +11,8 @@ interface ProductCardProps {
   showGalleryCount?: boolean;
   showCategoryBadge?: boolean;
   showHoverEffects?: boolean;
+  brandMap?: Record<string, string>;
+  categoryMap?: Record<string, string>;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -20,6 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showGalleryCount = true,
   showCategoryBadge = true,
   showHoverEffects = true,
+  brandMap = {},
+  categoryMap = {},
 }) => {
   const slug = `${product.title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")}-${product._id}`;
   const imageUrl = getImageUrl(product.featuredImage, "products");
@@ -57,26 +61,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <svg className="w-16 h-16 text-punjabac-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-16 h-16 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-          </div>
-        )}
-        {/* Quick action button for homepage variant */}
-        {variant === "homepage" && showHoverEffects && (
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <Link
-              href={`/products/${slug}`}
-              className="bg-white/90 backdrop-blur-sm text-punjabac-brand px-4 py-2 rounded-lg font-semibold hover:bg-white transition-colors shadow-lg"
-            >
-              View Details
-            </Link>
           </div>
         )}
         {/* Category Badge */}
         {showCategoryBadge && (
           <div className="absolute top-4 left-4">
-            <span className="bg-punjabac-brand text-white px-3 py-1 rounded-full text-xs font-medium">
+            <span className="bg-wingzimpex-brand text-white px-3 py-1 rounded-full text-xs font-medium">
               Auto AC
             </span>
           </div>
@@ -93,10 +86,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
         )}
         <div className="flex items-center gap-2 mb-2">
           {product.category && (
-            <span className="inline-block bg-[#ede7de] text-[#405a4d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">{product.category}</span>
+            <span className="inline-block bg-[#ede7de] text-[#405a4d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
+              {categoryMap[product.category] || 'Unknown Category'}
+            </span>
           )}
           {product.brand && (
-            <span className="inline-block bg-[#405a4d] text-white px-3 py-1 rounded-full text-xs font-semibold">{product.brand}</span>
+            <span className="inline-block bg-[#405a4d] text-white px-3 py-1 rounded-full text-xs font-semibold">
+              {brandMap[product.brand] || 'Unknown Brand'}
+            </span>
           )}
         </div>
         {/* Product Meta */}
@@ -107,14 +104,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
-          <Link
-            href={`/products/${slug}`}
-            className="flex-1 bg-punjabac-brand text-white py-3 px-4 rounded-lg font-semibold hover:bg-punjabac-brand-light transition-colors text-center"
-          >
-            View Details
-          </Link>
-        </div>
+        <Link
+          href={`/products/${slug}`}
+          className="block w-full bg-[#405a4d] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors text-center mt-4"
+          tabIndex={0}
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );

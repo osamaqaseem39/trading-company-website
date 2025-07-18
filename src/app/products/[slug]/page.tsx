@@ -1,27 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
-import { productsApi } from '../../../services/api';
 import AutoCompanies from '../../../components/AutoCompanies';
 import Image from 'next/image';
 import ProductDescription from '../../../components/ProductDescription';
 import ProductImageGallery from '../../../components/ProductImageGallery';
+import { productsApi } from '../../../services/api';
 
-export async function generateStaticParams() {
-  try {
-    const products = await productsApi.getAll();
-    return products.map(product => ({
-      slug: productsApi.generateSlug(product.title, product._id)
-    }));
-  } catch (error) {
-    console.error('Error generating static params for products:', error);
-    return [];
-  }
+function generateSlug(name: string, id: string) {
+  return (
+    name
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '') + '-' + id
+  );
 }
 
-// Server Component that fetches data
-async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateStaticParams() {
+  const products = await productsApi.getAll();
+  return products.map(product => ({ slug: generateSlug(product.title, product._id) }));
+}
+
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = await productsApi.getBySlug(slug);
+  // Find the product by slug
+  const products = await productsApi.getAll();
+  const product = products.find((p: any) => generateSlug(p.title, p._id) === slug);
 
   if (!product) {
     return (
@@ -54,11 +60,11 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
       <section className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-punjabac-brand transition-colors">
+            <Link href="/" className="text-gray-500 hover:text-wingzimpex-brand transition-colors">
               Home
             </Link>
             <span className="text-gray-400">/</span>
-            <Link href="/products" className="text-gray-500 hover:text-punjabac-brand transition-colors">
+            <Link href="/products" className="text-gray-500 hover:text-wingzimpex-brand transition-colors">
               Products
             </Link>
             <span className="text-gray-400">/</span>
@@ -80,7 +86,7 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
               {/* Product Info */}
               <div className="p-8 lg:p-12">
                 <div className="mb-6">
-                  <span className="bg-punjabac-brand/10 text-punjabac-brand px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-wingzimpex-brand/10 text-wingzimpex-brand px-3 py-1 rounded-full text-sm font-medium">
                     Auto AC Parts
                   </span>
                 </div>
@@ -99,7 +105,6 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
                     </svg>
                     Added on {new Date(product.createdAt).toLocaleDateString()}
                   </div>
-                  
                   {product.gallery && product.gallery.length > 0 && (
                     <div className="flex items-center text-sm text-gray-500">
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,13 +117,13 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="flex-1 bg-punjabac-brand text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center hover:bg-punjabac-brand-light focus:outline-none focus:ring-2 focus:ring-punjabac-brand">
+                  <button className="flex-1 bg-wingzimpex-brand text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center hover:bg-wingzimpex-brand-light focus:outline-none focus:ring-2 focus:ring-wingzimpex-brand">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     Contact for Quote
                   </button>
-                  <button className="px-6 py-3 border-2 border-punjabac-brand text-punjabac-brand rounded-lg font-semibold hover:bg-punjabac-brand/10 transition-colors flex items-center justify-center">
+                  <button className="px-6 py-3 border-2 border-wingzimpex-brand text-wingzimpex-brand rounded-lg font-semibold hover:bg-wingzimpex-brand/10 transition-colors flex items-center justify-center">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
@@ -140,7 +145,7 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
                     </div>
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
-                        <svg className="w-4 h-4 text-punjabac-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
@@ -174,22 +179,22 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
       <AutoCompanies />
 
       {/* Contact CTA */}
-      <section className="bg-punjabac-brand py-16">
+      <section className="bg-wingzimpex-brand py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
-          <p className="text-xl mb-8 text-punjabac-brand/80">
+          <p className="text-xl mb-8 text-wingzimpex-brand/80">
             Our experts are here to help you find the perfect auto AC parts for your vehicle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/contact" 
-              className="bg-white text-punjabac-brand px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-wingzimpex-brand px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Get Expert Advice
             </a>
             <a 
               href="tel:92-345-8428889" 
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-punjabac-brand transition-colors"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wingzimpex-brand transition-colors"
             >
               Call Now: 92-345-8428889
             </a>
@@ -198,6 +203,4 @@ async function ProductDetailPage({ params }: { params: Promise<{ slug: string }>
       </section>
     </main>
   );
-}
-
-export default ProductDetailPage; 
+} 

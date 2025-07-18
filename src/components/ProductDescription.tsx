@@ -13,7 +13,7 @@ export default function ProductDescription({ description }: { description: strin
       </p>
       {isLong && (
         <button
-          className="mt-2 text-punjabac-brand underline font-semibold text-sm focus:outline-none"
+          className="mt-2 text-wingzimpex-brand underline font-semibold text-sm focus:outline-none"
           onClick={() => setExpanded(v => !v)}
         >
           {expanded ? 'Show less' : 'Read more'}

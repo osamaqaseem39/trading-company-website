@@ -2,37 +2,84 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { productsApi, Product } from '../services/api';
+import { productsApi, brandsApi, categoriesApi, Product } from '../services/api';
 import ProductCard from './ProductCard';
 
 const HomeProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [brandMap, setBrandMap] = useState<Record<string, string>>({});
+  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
+  const [categoriesData, setCategoriesData] = useState<any[]>([]); // <-- store categories
+  const [categoriesList, setCategoriesList] = useState<{ id: string, name: string, count: number }[]>([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    async function fetchData() {
       try {
-        const data = await productsApi.getAll();
-        console.log('Fetched products:', data); // Debug log
-        // Show only first 6 products on homepage
-        setProducts(data.slice(0, 6));
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
+        const [products, brands, categories] = await Promise.all([
+          productsApi.getAll(),
+          brandsApi.getAll(),
+          categoriesApi.getAll(),
+        ]);
+        setProducts(products.slice(0, 6));
+        setBrandMap(Object.fromEntries(brands.map((b: any) => [b._id, b.name])));
+        setCategoryMap(Object.fromEntries(categories.map((c: any) => [c._id, c.name])));
+        setCategoriesData(categories);
+      } catch (e) {
+        setProducts([]);
+        setBrandMap({});
+        setCategoryMap({});
+        setCategoriesData([]);
       }
-    };
-
-    fetchProducts();
+      setLoading(false);
+    }
+    fetchData();
   }, []);
 
+  // Build categoriesList when products or categoriesData change
+  useEffect(() => {
+    const allCategory = { id: 'all', name: 'All Products', count: products.length };
+    const categoryCounts: Record<string, number> = {};
+    products.forEach((p) => {
+      if (p.category) {
+        categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+      }
+    });
+    // Only include parent categories (no parent or parent === null/undefined)
+    const parentCategories = categoriesData.filter((cat: any) => !cat.parent || cat.parent === null);
+    let dynamicCategories = parentCategories.map((cat: any) => ({
+      id: cat._id,
+      name: cat.name,
+      count: categoryCounts[cat._id] || 0,
+    }));
+    // Sort by product count descending and take top 5
+    dynamicCategories = dynamicCategories.sort((a, b) => b.count - a.count).slice(0, 5);
+    setCategoriesList([allCategory, ...dynamicCategories]);
+  }, [products, categoriesData]);
+
+  // Helper to get all descendant category IDs
+  function getAllDescendantCategoryIds(parentId: string, categories: any[]): string[] {
+    const directChildren = categories.filter(cat => cat.parent === parentId).map(cat => cat._id);
+    let all = [...directChildren];
+    for (const childId of directChildren) {
+      all = all.concat(getAllDescendantCategoryIds(childId, categories));
+    }
+    return all;
+  }
+
   // Filter products by category
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
-    : products.filter(product => 
-        product.title.toLowerCase().includes(selectedCategory.toLowerCase())
-      );
+  const filteredProducts = React.useMemo(() => {
+    if (selectedCategory === 'all') return products;
+    // Find all subcategory IDs for the selected parent
+    const subCategoryIds = categoriesData
+      .filter(cat => cat.parent === selectedCategory)
+      .map(cat => cat._id);
+    return products.filter(product =>
+      product.category === selectedCategory ||
+      (product.subCategory && subCategoryIds.includes(product.subCategory))
+    );
+  }, [products, selectedCategory, categoriesData]);
 
   const categories = [
     { id: 'all', name: 'All Products', count: products.length },
@@ -44,43 +91,32 @@ const HomeProducts = () => {
 
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-punjabac-brand/5">
+    <section className="py-20" style={{ background: '#ede7de' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-punjabac-brand/10 text-punjabac-brand rounded-full text-sm font-medium mb-4">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </svg>
-            Premium Auto AC Parts
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="font-bold mb-6 text-[#2d2d2d] text-[60px]">
             Our Featured Products
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover our comprehensive range of genuine auto AC parts and components from trusted brands. 
-            Quality assured for optimal performance and reliability.
-          </p>
+          <p className="text-xl text-[#2d2d2d] max-w-3xl mx-auto leading-relaxed">
+            Explore our curated selection of high-quality food items, beverages, and kitchen essentials from trusted brands.</p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          {categoriesList.map((category, idx) => (
             <button
-              key={category.id}
+              key={category.id || idx}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? 'bg-punjabac-brand text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md hover:shadow-lg'
-              }`}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
+                ${selectedCategory === category.id
+                  ? 'border-2 border-[#2d2d2d] font-bold bg-[#ede7de] text-[#2d2d2d]'
+                  : 'bg-[#ede7de] text-[#2d2d2d] border border-[#d6d1c7] hover:bg-[#e0dbd2]'}
+              `}
+              style={{ minWidth: 120 }}
             >
               {category.name}
-              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                selectedCategory === category.id
-                  ? 'bg-white/20'
-                  : 'bg-punjabac-brand/10 text-punjabac-brand'
-              }`}>
+              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${selectedCategory === category.id ? 'bg-[#2d2d2d] text-white' : 'bg-[#d6d1c7] text-[#2d2d2d]'}`}>
                 {category.count}
               </span>
             </button>
@@ -91,7 +127,7 @@ const HomeProducts = () => {
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="relative">
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-punjabac-brand"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-wingzimpex-brand"></div>
               <div className="mt-4 text-center text-gray-600">Loading featured products...</div>
             </div>
           </div>
@@ -107,6 +143,8 @@ const HomeProducts = () => {
                     showGalleryCount={true}
                     showCategoryBadge={true}
                     showHoverEffects={true}
+                    brandMap={brandMap}
+                    categoryMap={categoryMap}
                   />
                 </div>
               ))}
@@ -116,7 +154,7 @@ const HomeProducts = () => {
             <div className="text-center">
               <Link
                 href="/products"
-                className="inline-flex items-center bg-punjabac-brand text-white px-8 py-4 rounded-lg font-semibold hover:bg-punjabac-brand-light transition-colors"
+                className="inline-flex items-center bg-[#405a4d] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
               >
                 View All Products
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +181,7 @@ const HomeProducts = () => {
               {selectedCategory !== 'all' && (
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className="bg-punjabac-brand text-white px-6 py-3 rounded-lg font-semibold hover:bg-punjabac-brand-light transition-colors"
+                  className="bg-[#405a4d] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
                 >
                   View All Products
                 </button>

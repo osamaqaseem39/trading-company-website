@@ -31,15 +31,7 @@ export interface Product {
   updatedAt: string;
   category?: string;
   brand?: string;
-}
-
-export interface Service {
-  _id: string;
-  title: string;
-  description: string;
-  featuredImage?: string;
-  createdAt: string;
-  updatedAt: string;
+  subCategory?: string; // <-- add this line
 }
 
 export interface Blog {
@@ -51,6 +43,40 @@ export interface Blog {
   featuredImage?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Brand {
+  _id: string;
+  name: string;
+  image?: string;
+  description?: string;
+}
+
+export interface Category {
+  _id: string;
+  name: string;
+  image?: string;
+  description?: string;
+  parent?: string | null; // Add parent field for parent-child relationship
+}
+
+export interface Sector {
+  _id: string;
+  title: string;
+  description: string;
+  featuredImage?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Service {
+  _id: string;
+  title: string;
+  description: string;
+  featuredImage?: string;
+  createdAt: string;
+  updatedAt?: string;
+  // Add other fields as needed
 }
 
 // Utility function to generate slug
@@ -126,66 +152,6 @@ export const productsApi = {
   }
 };
 
-// Services API
-export const servicesApi = {
-  getAll: async (): Promise<Service[]> => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/services`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch services');
-      }
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
-    } catch (error) {
-      console.error('Error fetching services:', error);
-      return [];
-    }
-  },
-
-  getById: async (id: string): Promise<Service | null> => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/services/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch service');
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching service:', error);
-      return null;
-    }
-  },
-
-  getBySlug: async (slug: string): Promise<Service | null> => {
-    try {
-      // Extract ID from slug
-      const parts = slug.split('-');
-      const id = parts[parts.length - 1];
-      
-      // Fetch by ID
-      const response = await fetch(`${API_BASE_URL}/services/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch service');
-      }
-      const service = await response.json();
-      
-      // Verify the slug matches
-      const expectedSlug = generateSlug(service.title, service._id);
-      if (slug !== expectedSlug) {
-        return null; // Slug doesn't match, return null
-      }
-      
-      return service;
-    } catch (error) {
-      console.error('Error fetching service by slug:', error);
-      return null;
-    }
-  },
-
-  generateSlug: (title: string, id: string): string => {
-    return generateSlug(title, id);
-  }
-};
-
 // Blogs API
 export const blogsApi = {
   getAll: async (): Promise<Blog[]> => {
@@ -214,5 +180,105 @@ export const blogsApi = {
       console.error('Error fetching blog:', error);
       return null;
     }
+  }
+}; 
+
+export const updatesApi = blogsApi;
+
+export const brandsApi = {
+  getAll: async (): Promise<Brand[]> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/brands`);
+      if (!response.ok) throw new Error('Failed to fetch brands');
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error('Error fetching brands:', error);
+      return [];
+    }
+  },
+};
+
+export const categoriesApi = {
+  getAll: async (): Promise<Category[]> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/categories`);
+      if (!response.ok) throw new Error('Failed to fetch categories');
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      return [];
+    }
+  },
+
+  getNested: async (): Promise<Category[]> => {
+    try {
+      // Use axios for this endpoint
+      const response = await axios.get(`${API_BASE_URL}/categories/nested`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error fetching nested categories:', error);
+      return [];
+    }
+  },
+}; 
+
+export const sectorsApi = {
+  getAll: async (): Promise<Sector[]> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/sectors`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch sectors');
+      }
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error('Error fetching sectors:', error);
+      return [];
+    }
+  },
+  getBySlug: async (slug: string): Promise<Sector | null> => {
+    try {
+      // Extract ID from slug
+      const parts = slug.split('-');
+      const id = parts[parts.length - 1];
+      const response = await fetch(`${API_BASE_URL}/sectors/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch sector');
+      }
+      const sector = await response.json();
+      // Optionally verify slug matches
+      const expectedSlug = generateSlug(sector.title, sector._id);
+      if (slug !== expectedSlug) {
+        return null;
+      }
+      return sector;
+    } catch (error) {
+      console.error('Error fetching sector by slug:', error);
+      return null;
+    }
+  },
+  generateSlug: (title: string, id: string): string => {
+    return generateSlug(title, id);
+  }
+};
+
+export const servicesApi = {
+  getAll: async (): Promise<Service[]> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/services`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch services');
+      }
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      return [];
+    }
+  },
+  generateSlug: (title: string, id: string): string => {
+    return generateSlug(title, id);
   }
 }; 

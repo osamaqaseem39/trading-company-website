@@ -8,7 +8,6 @@ const navLinks = [
   { label: 'Categories', href: '/categories' },
   { label: 'Company', href: '/company' },
   { label: 'Updates', href: '/updates' },
-  { label: 'Resources', href: '/resources' },
   { label: 'Become A Supplier', href: '/become-a-supplier' },
 ];
 
@@ -25,18 +24,18 @@ export default function Header() {
     <header className={`${scrolled ? 'bg-white' : 'bg-[#fafafa]'} border-b border-[#ececec] sticky top-0 z-50 transition-colors duration-500 ease-in-out`}>
       <div className={`max-w-[1600px] mx-auto flex items-center justify-between ${scrolled ? 'py-1.5 px-4' : 'py-3 px-4'} transition-all duration-500 ease-in-out`}>
         {/* Logo + Brand Name */}
-        <div className="flex items-center min-w-[220px]">
+        <Link href="/" className="flex items-center min-w-[220px] group" aria-label="Go to homepage">
           <img
             src="/images/logo-menu.png"
             alt="Wingz Impex Logo"
             width={scrolled ? 120 : 180}
             height={scrolled ? 120 : 180}
-            className={`object-contain mr-3 transition-all duration-500 ease-in-out ${scrolled ? 'w-16 h-16' : 'w-24 h-24'}`}
+            className={`object-contain mr-3 transition-all duration-500 ease-in-out ${scrolled ? 'w-16 h-16' : 'w-24 h-24'} group-hover:opacity-80`}
           />
           <div>
             <span className="block font-bold text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
           </div>
-        </div>
+        </Link>
         {/* Centered Navigation */}
         <nav className="flex-1 flex justify-center">
           <ul className="flex gap-3">

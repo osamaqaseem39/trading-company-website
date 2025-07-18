@@ -1,7 +1,7 @@
 import './globals.css';
-import '../styles/punjabac-colors.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+// import MenuNav from '../components/MenuNav'; // Remove MenuNav
 
 export const metadata = {
   title: 'Wingz Impex | Food & Beverage Trading',
@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <Header />
+        {/* <MenuNav /> */}
         {children}
         <Footer />
       </body>

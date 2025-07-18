@@ -28,10 +28,10 @@ const WhyChooseUs = () => (
   <section className="py-16 bg-white">
     <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h2 className="font-bold text-richCharcoal mb-4" style={{ fontSize: '60px' }}>
-          Why Choose Wingz Impex?
+      <h2 className="font-bold mb-6 text-[#2d2d2d]" style={{ fontSize: '60px' }}>
+        Why Choose Wingz Impex?
         </h2>
-        <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+        <p className="text-xl max-w-3xl mx-auto leading-relaxed text-[#2d2d2d]">
           We are your trusted partner in food and beverage trading—delivering quality, reliability, and global reach to help your business thrive.
         </p>
       </div>

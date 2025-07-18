@@ -25,9 +25,9 @@ const OurBrandsPage = () => {
 
   return (
     <main className="max-w-7xl mx-auto py-12 px-4">
-      {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Trusted Brands</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Trusted Brands</h1>
+        <h2 className="text-xl text-wingzimpex-brand font-semibold mb-4">Premium Brands for Quality & Reliability</h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           In pursuit of perfection and cohesion in green is always our spiritual motto. We achieve our goals by using highly dependable imported brands of automobile air-conditioning systems & parts such as DENSO, COOL GEAR (Denso), SANDEN, BEHR, and more. These products are excellent in quality and competitive in price.
         </p>
@@ -47,7 +47,7 @@ const OurBrandsPage = () => {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-punjabac-brand mb-2">{brand.name}</h3>
+              <h3 className="text-2xl font-bold text-wingzimpex-brand mb-2">{brand.name}</h3>
               <p className="text-gray-600">{brand.description}</p>
             </div>
             
@@ -55,7 +55,7 @@ const OurBrandsPage = () => {
               <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
               {brand.features.map((feature, featureIndex) => (
                 <div key={featureIndex} className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-punjabac-brand rounded-full"></div>
+                  <div className="w-2 h-2 bg-wingzimpex-brand rounded-full"></div>
                   <span className="text-gray-700">{feature}</span>
                 </div>
               ))}
@@ -75,8 +75,8 @@ const OurBrandsPage = () => {
         
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="w-16 h-16 bg-punjabac-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-punjabac-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-wingzimpex-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -85,8 +85,8 @@ const OurBrandsPage = () => {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-punjabac-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-punjabac-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-wingzimpex-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -95,8 +95,8 @@ const OurBrandsPage = () => {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-punjabac-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-punjabac-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-wingzimpex-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>

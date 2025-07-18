@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import HomeProducts from '@/components/HomeProducts';
@@ -10,11 +13,10 @@ export default function Home() {
   return (
     <>
       <Hero /> 
-      <HomeProducts />
       <Services />
-    
       <WhoWeAre />
       <WhyChooseUs />
+      <HomeProducts />
       <Brands />
       <ContactSection />
     </>
