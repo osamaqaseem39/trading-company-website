@@ -4,6 +4,8 @@ import AutoCompanies from '../../../components/AutoCompanies';
 import ProductDescription from '../../../components/ProductDescription';
 import ProductImageGallery from '../../../components/ProductImageGallery';
 import { productsApi, brandsApi, categoriesApi } from '../../../services/api';
+import Brands from '../../../components/Brands';
+import ContactSection from '../../../components/ContactSection';
 
 function generateSlug(name: string, id: string) {
   return (
@@ -152,36 +154,22 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Product Features</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                      <div className="w-8 h-8 bg-[#ede7de] rounded-full flex items-center justify-center mr-3">
+                        <img src="/images/global.jpg" alt="Global Sourcing" className="w-5 h-5 object-cover rounded-full" />
                       </div>
-                      <span className="text-gray-700">Genuine Parts</span>
+                      <span className="text-gray-700 font-medium">Global Sourcing Power</span>
                     </div>
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
-                        <svg className="w-4 h-4 text-wingzimpex-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                      <div className="w-8 h-8 bg-[#2d2d2d] rounded-full flex items-center justify-center mr-3">
+                        <img src="/images/quality.jpg" alt="Quality Assurance" className="w-5 h-5 object-cover rounded-full" />
                       </div>
-                      <span className="text-gray-700">Quality Assured</span>
+                      <span className="text-gray-700 font-medium">Quality Assurance</span>
                     </div>
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
-                        <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                      <div className="w-8 h-8 bg-[#ede7de] rounded-full flex items-center justify-center mr-3">
+                        <img src="/images/shipping.jpg" alt="Reliable & On-Time Delivery" className="w-5 h-5 object-cover rounded-full" />
                       </div>
-                      <span className="text-gray-700">Warranty Included</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                        <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Expert Support</span>
+                      <span className="text-gray-700 font-medium">Reliable & On-Time Delivery</span>
                     </div>
                   </div>
                 </div>
@@ -191,32 +179,15 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
         </div>
       </section>
 
-      {/* Auto Companies Section */}
-      <AutoCompanies />
-
-      {/* Contact CTA */}
-      <section className="bg-wingzimpex-brand py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
-          <p className="text-xl mb-8 text-wingzimpex-brand/80">
-            Our experts are here to help you find the perfect auto AC parts for your vehicle.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
-              className="bg-white text-wingzimpex-brand px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Get Expert Advice
-            </a>
-            <a 
-              href="tel:92-345-8428889" 
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wingzimpex-brand transition-colors"
-            >
-              Call Now: 92-345-8428889
-            </a>
-          </div>
+      {/* Our Brands Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Brands />
         </div>
       </section>
+
+      {/* Contact Us Section */}
+      <ContactSection />
     </main>
   );
 } 
