@@ -178,7 +178,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
       {/* Our Brands Section */}
       <section className="py-12 bg-[#2d2d2d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Brands />
+          <Brands dark />
         </div>
       </section>
 

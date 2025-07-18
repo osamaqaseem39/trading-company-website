@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { brandsApi } from '../services/api';
 
-const Brands = () => {
+const Brands = ({ dark = false }: { dark?: boolean }) => {
   const [brands, setBrands] = useState<any[]>([]);
 
   useEffect(() => {
@@ -27,25 +27,17 @@ const Brands = () => {
   const displayBrands = brands.length > 0 ? brands : fallbackBrands;
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className={dark ? "py-20" : "py-20 bg-gray-50"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="font-bold text-center mb-4" style={{ fontSize: '60px', color: '#2d2d2d' }}>Our Brands</h2>
-        <p className="text-xl max-w-3xl mx-auto leading-relaxed text-wingzimpex-brand text-center mb-10">
-          We partner with premium brands known for their quality, reliability, and innovation—ensuring you always receive the best products and service.
-        </p>
-        <div className="flex flex-wrap justify-center items-end gap-x-16 gap-y-10 md:gap-x-20 md:gap-y-12 overflow-x-auto">
+        <div className="text-center mb-12">
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${dark ? 'text-white' : 'text-gray-900'}`}>Our Brands</h2>
+          <p className={`text-xl max-w-3xl mx-auto ${dark ? 'text-white/80' : 'text-gray-600'}`}>Genuine auto AC parts and components from trusted brands for optimal performance and reliability.</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {displayBrands.map((brand, idx) => (
-            <div key={brand._id || brand.name || idx} className="flex flex-col items-center min-w-[120px]">
-              <img
-                src={brand.image || brand.src}
-                alt={brand.name}
-                width={120}
-                height={120}
-                className="h-16 w-auto object-contain mb-4 drop-shadow-md"
-                style={{ height: '4rem' }}
-                loading="lazy"
-              />
-              <span className="text-base font-medium text-gray-700 mt-2 text-center">{brand.name}</span>
+            <div key={idx} className="flex flex-col items-center">
+              <img src={brand.image} alt={brand.name} className="h-16 w-auto mb-2" />
+              <span className={`text-lg font-semibold ${dark ? 'text-white' : 'text-gray-800'}`}>{brand.name}</span>
             </div>
           ))}
         </div>
