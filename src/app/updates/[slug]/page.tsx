@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ContactSection from '../../../components/ContactSection';
 import { blogsApi } from '../../../services/api';
+import ReactMarkdown from 'react-markdown';
 
 export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
@@ -11,7 +12,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
 
   if (!blog) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
+      <main className="min-h-screen bg-[#ede7de]">
         <div className="max-w-4xl mx-auto py-12 px-4">
           <div className="text-center">
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -21,7 +22,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
             </div>
             <h1 className="text-3xl font-bold mb-4">Blog Not Found</h1>
             <p className="text-gray-600 mb-6">The blog you're looking for doesn't exist or has been removed.</p>
-            <Link href="/updates" className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+            <Link href="/updates" className="bg-wingzimpex-brand text-white px-6 py-3 rounded-lg font-semibold hover:bg-wingzimpex-brand-light transition-colors">
               Back to Updates
             </Link>
           </div>
@@ -31,7 +32,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
+    <main className="min-h-screen bg-[#ede7de]">
       {/* Breadcrumb */}
       <section className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -62,39 +63,16 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
               <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 {blog.title}
               </h1>
-              <div className="mb-6 text-sm text-gray-500">
-                Published on {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Unknown date'}
+              <div className="prose max-w-none mb-8">
+                <ReactMarkdown>{blog.content || ''}</ReactMarkdown>
               </div>
-              <div className="prose max-w-none mb-8" dangerouslySetInnerHTML={{ __html: blog.content || '' }} />
               <Link href="/updates" className="text-wingzimpex-brand hover:underline">Back to Updates</Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="bg-wingzimpex-brand py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Want to know more?</h2>
-          <p className="text-xl mb-8 text-wingzimpex-brand/80">
-            Contact us for more information or to discuss your needs with our team.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
-              className="bg-white text-wingzimpex-brand px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Contact Us
-            </a>
-            <a 
-              href="tel:92-345-8428889" 
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wingzimpex-brand transition-colors"
-            >
-              Call Now: 92-345-8428889
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Contact Us Section */}
       <ContactSection />
     </main>
   );
