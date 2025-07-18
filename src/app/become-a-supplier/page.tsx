@@ -123,18 +123,27 @@ export default function BecomeASupplierPage() {
   };
 
   return (
-    <section className="py-20 bg-[#ede7de] min-h-screen">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-0 md:p-0 flex flex-col md:flex-row overflow-hidden">
-        {/* Image Column */}
-        <div className="md:w-1/2 w-full flex items-center justify-center bg-[#ede7de] p-8 md:p-12">
-          <img src="/images/supplier.jpg" alt="Supplier" className="rounded-xl object-cover w-full h-80 md:h-full max-h-[500px]" style={{ objectPosition: 'center' }} />
+    <section className="py-20 bg-[#ede7de] flex justify-center">
+      <div className="flex flex-col lg:flex-row gap-8 max-w-[1400px] w-full mx-auto">
+        {/* Supplier Image Card */}
+        <div className="flex-1 rounded-3xl overflow-hidden flex items-center justify-center min-h-[800px] relative bg-[#ede7de]">
+          <img
+            src="/images/supplier.jpg"
+            alt="Become a Supplier"
+            className="object-cover w-full h-full absolute inset-0 z-0"
+            style={{ objectPosition: 'center' }}
+          />
+          <div className="relative z-10 bg-[#2d2d2d]/70 rounded-3xl p-12 flex flex-col justify-center items-center w-full h-full">
+            <h2 className="font-bold text-white mb-6 text-center" style={{ fontSize: '60px' }}>
+              Become a Supplier
+            </h2>
+            <p className="text-lg text-white mb-8 max-w-lg text-center">
+              Join our trusted network of suppliers. Complete the form and our team will get back to you as soon as possible.
+            </p>
+          </div>
         </div>
-        {/* Form Column */}
-        <div className="md:w-1/2 w-full flex flex-col justify-center p-8 md:p-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-center" style={{ color: '#2d2d2d' }}>Become a Supplier</h1>
-          <p className="mb-8 text-lg text-[#2d2d2d] text-center max-w-xl mx-auto">
-            Join our trusted network of suppliers. Complete the form below and our team will get back to you as soon as possible.
-          </p>
+        {/* Supplier Form Card */}
+        <div className="flex-1 bg-white rounded-3xl shadow-lg p-8 md:p-12 flex flex-col justify-center min-h-[800px]">
           {success && <div className="mb-4 p-3 bg-green-100 text-green-700 rounded text-center font-semibold">Thank you! We’ll get back to you soon.</div>}
           {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded text-center font-semibold">{error}</div>}
           <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
