@@ -37,7 +37,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
 
   if (!product) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
+      <main className="min-h-screen bg-[#ede7de]">
         <div className="max-w-4xl mx-auto py-12 px-4">
           <div className="text-center">
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -61,7 +61,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
     : product.gallery || [];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
+    <main className="min-h-screen bg-[#ede7de]">
       {/* Breadcrumb */}
       <section className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
