@@ -135,10 +135,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div>
-                  <p className="text-[#2d2d2d]">28, Mozang Road</p>
-                  <p className="text-[#2d2d2d]">Opp. Sir Ganga Ram Hospital</p>
-                  <p className="text-[#2d2d2d]">Lahore, Pakistan</p>
-                  <p className="text-[#2d2d2d]">P.O Box : 6009 Dubai, United Arab Emirates</p>
+                  <p className="text-[#2d2d2d]">6009 Dubai, United Arab Emirates</p>
                   {/* Google Maps Link */}
                   <a
                     href="https://maps.app.goo.gl/risMNUN4yaSqm4ug8"

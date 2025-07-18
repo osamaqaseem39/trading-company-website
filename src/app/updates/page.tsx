@@ -22,7 +22,7 @@ export default function UpdatesPage() {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const res = await axios.get("https://trading-company-bcyf.vercel.app/api/blogs");
+        const res = await axios.get("https://adminserver.wingzimpex.com/api/blogs");
         const data = res.data;
         setBlogs(Array.isArray(data) ? data.filter((b: Blog) => b.status === "published") : []);
       } catch (error) {

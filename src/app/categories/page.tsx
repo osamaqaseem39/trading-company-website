@@ -8,7 +8,7 @@ import axios from "axios";
 import ProductCard from '../../components/ProductCard';
 import Link from 'next/link';
 
-const API_BASE_URL = 'https://trading-company-bcyf.vercel.app/api';
+const API_BASE_URL = 'https://adminserver.wingzimpex.com/api';
 
 const CategoriesPage = () => {
   const [nestedCategories, setNestedCategories] = useState<any[]>([]);

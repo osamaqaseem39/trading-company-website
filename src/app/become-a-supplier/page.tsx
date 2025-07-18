@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 
-const API_URL = "https://trading-company-bcyf.vercel.app/api/suppliers";
+const API_URL = "https://adminserver.wingzimpex.com/api/suppliers";
 
 export default function BecomeASupplierPage() {
   const [form, setForm] = useState({

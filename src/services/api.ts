@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = 'https://trading-company-bcyf.vercel.app/api';
+const API_BASE_URL = 'https://adminserver.wingzimpex.com/api';
 const ADMIN_BASE_URL = 'https://server.wingzimpex.com';
 
 // Create and export an Axios instance for API calls
