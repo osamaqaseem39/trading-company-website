@@ -35,12 +35,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="min-h-screen bg-[#ede7de] py-16">
+      {/* Header with dark background and subcategory name */}
+      <header className="w-full bg-[#2d2d2d] py-16 mb-12">
+        <h1 className="text-5xl font-bold text-white text-center">{subcategory.name}</h1>
+      </header>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 text-center">
-          {subcategory.image && (
-            <img src={subcategory.image} alt={subcategory.name} className="mx-auto mb-6 w-32 h-32 object-cover rounded-xl shadow" />
-          )}
-          <h1 className="text-4xl font-bold text-[#405a4d] mb-2">{subcategory.name}</h1>
           {subcategory.description && (
             <p className="text-lg text-gray-700 mb-2">{subcategory.description}</p>
           )}
