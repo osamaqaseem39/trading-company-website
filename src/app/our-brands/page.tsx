@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import { brandsApi, productsApi, Brand, Product } from '../../services/api';
 import ContactSection from '../../components/ContactSection';

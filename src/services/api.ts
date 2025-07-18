@@ -58,6 +58,7 @@ export interface Category {
   image?: string;
   description?: string;
   parent?: string | null; // Add parent field for parent-child relationship
+  slug?: string; // Add slug for URL-friendly identifiers
 }
 
 export interface Sector {

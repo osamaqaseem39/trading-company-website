@@ -85,7 +85,7 @@ export default function CategoryProductsClient({
               {subcategories.map((subcat: Category) => (
                 <Link
                   key={subcat._id}
-                  href={`/categories/${subcat.name.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-') + '-' + subcat._id}`}
+                  href={`/subcategories/${(subcat as any).slug || subcat._id}`}
                   className="bg-white rounded-2xl shadow p-6 flex flex-col items-center hover:shadow-lg transition group border border-gray-100 hover:border-wingzimpex-brand"
                   aria-label={`Go to subcategory ${subcat.name}`}
                 >

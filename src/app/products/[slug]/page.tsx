@@ -18,13 +18,10 @@ function generateSlug(name: string, id: string) {
   );
 }
 
-export async function generateStaticParams() {
-  const products = await productsApi.getAll();
-  return products.map(product => ({ slug: generateSlug(product.title, product._id) }));
-}
+// Removed generateStaticParams to make all product pages dynamic
 
-export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   // Find the product by slug
   const products = await productsApi.getAll();
   const product = products.find((p: any) => generateSlug(p.title, p._id) === slug);
