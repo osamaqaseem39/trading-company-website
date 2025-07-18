@@ -96,12 +96,8 @@ function generateSlug(title: string, id: string): string {
 export const productsApi = {
   getAll: async (): Promise<Product[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/products`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
+      const response = await api.get('/products');
+      return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching products:', error);
       return [];
@@ -110,14 +106,54 @@ export const productsApi = {
 
   getById: async (id: string): Promise<Product | null> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/products/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch product');
-      }
-      return await response.json();
+      const response = await api.get(`/products/${id}`);
+      return response.data;
     } catch (error) {
       console.error('Error fetching product:', error);
       return null;
+    }
+  },
+
+  getByCategory: async (categoryId: string): Promise<Product[]> => {
+    try {
+      const response = await api.get(`/products/category/${categoryId}`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error fetching products by category:', error);
+      return [];
+    }
+  },
+
+  getBySubcategory: async (subcategoryId: string): Promise<Product[]> => {
+    try {
+      const response = await api.get(`/products/subcategory/${subcategoryId}`);
+      if (Array.isArray(response.data)) return response.data;
+      if (response.data && Array.isArray(response.data.products)) return response.data.products;
+      return [];
+    } catch (error) {
+      console.error('Error fetching products by subcategory:', error);
+      return [];
+    }
+  },
+
+  getByBrand: async (brandId: string): Promise<Product[]> => {
+    try {
+      const response = await api.get(`/products/query?brand=${brandId}`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error fetching products by brand:', error);
+      return [];
+    }
+  },
+
+  query: async (params: { category?: string; subCategory?: string; brand?: string }): Promise<Product[]> => {
+    try {
+      const query = new URLSearchParams(params as any).toString();
+      const response = await api.get(`/products/query?${query}`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error querying products:', error);
+      return [];
     }
   },
 
@@ -126,20 +162,14 @@ export const productsApi = {
       // Extract ID from slug
       const parts = slug.split('-');
       const id = parts[parts.length - 1];
-      
       // Fetch by ID
-      const response = await fetch(`${API_BASE_URL}/products/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch product');
-      }
-      const product = await response.json();
-      
+      const response = await api.get(`/products/${id}`);
+      const product = response.data;
       // Verify the slug matches
       const expectedSlug = generateSlug(product.title, product._id);
       if (slug !== expectedSlug) {
         return null; // Slug doesn't match, return null
       }
-      
       return product;
     } catch (error) {
       console.error('Error fetching product by slug:', error);
@@ -156,12 +186,8 @@ export const productsApi = {
 export const blogsApi = {
   getAll: async (): Promise<Blog[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/blogs`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch blogs');
-      }
-      const data = await response.json();
-      return Array.isArray(data) ? data.filter(blog => blog.status === 'published') : [];
+      const response = await api.get('/blogs');
+      return Array.isArray(response.data) ? response.data.filter(blog => blog.status === 'published') : [];
     } catch (error) {
       console.error('Error fetching blogs:', error);
       return [];
@@ -170,11 +196,8 @@ export const blogsApi = {
 
   getBySlug: async (slug: string): Promise<Blog | null> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/blogs/${slug}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch blog');
-      }
-      const blog = await response.json();
+      const response = await api.get(`/blogs/${slug}`);
+      const blog = response.data;
       return blog.status === 'published' ? blog : null;
     } catch (error) {
       console.error('Error fetching blog:', error);
@@ -188,10 +211,8 @@ export const updatesApi = blogsApi;
 export const brandsApi = {
   getAll: async (): Promise<Brand[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/brands`);
-      if (!response.ok) throw new Error('Failed to fetch brands');
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
+      const response = await api.get('/brands');
+      return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching brands:', error);
       return [];
@@ -202,10 +223,8 @@ export const brandsApi = {
 export const categoriesApi = {
   getAll: async (): Promise<Category[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/categories`);
-      if (!response.ok) throw new Error('Failed to fetch categories');
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
+      const response = await api.get('/categories');
+      return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching categories:', error);
       return [];
@@ -214,8 +233,7 @@ export const categoriesApi = {
 
   getNested: async (): Promise<Category[]> => {
     try {
-      // Use axios for this endpoint
-      const response = await axios.get(`${API_BASE_URL}/categories/nested`);
+      const response = await api.get('/categories/nested');
       return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching nested categories:', error);
@@ -227,12 +245,8 @@ export const categoriesApi = {
 export const sectorsApi = {
   getAll: async (): Promise<Sector[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/sectors`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch sectors');
-      }
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
+      const response = await api.get('/sectors');
+      return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching sectors:', error);
       return [];
@@ -243,11 +257,8 @@ export const sectorsApi = {
       // Extract ID from slug
       const parts = slug.split('-');
       const id = parts[parts.length - 1];
-      const response = await fetch(`${API_BASE_URL}/sectors/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch sector');
-      }
-      const sector = await response.json();
+      const response = await api.get(`/sectors/${id}`);
+      const sector = response.data;
       // Optionally verify slug matches
       const expectedSlug = generateSlug(sector.title, sector._id);
       if (slug !== expectedSlug) {
@@ -267,12 +278,8 @@ export const sectorsApi = {
 export const servicesApi = {
   getAll: async (): Promise<Service[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/services`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch services');
-      }
-      const data = await response.json();
-      return Array.isArray(data) ? data : [];
+      const response = await api.get('/services');
+      return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error('Error fetching services:', error);
       return [];
@@ -281,4 +288,25 @@ export const servicesApi = {
   generateSlug: (title: string, id: string): string => {
     return generateSlug(title, id);
   }
+}; 
+
+export const subcategoryApi = {
+  getAll: async (): Promise<Category[]> => {
+    try {
+      const response = await api.get('/subcategories');
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error fetching subcategories:', error);
+      return [];
+    }
+  },
+  getNested: async (parentId: string): Promise<Category[]> => {
+    try {
+      const response = await api.get(`/subcategories/nested?parentId=${parentId}`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Error fetching nested subcategories:', error);
+      return [];
+    }
+  },
 }; 

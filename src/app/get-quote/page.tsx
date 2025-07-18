@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function GetQuotePage() {
   const [form, setForm] = useState<{ name: string; email: string; phone: string; details: string; image: File | null }>({
@@ -35,19 +36,15 @@ export default function GetQuotePage() {
       formData.append("details", form.details);
       if (form.image) formData.append("image", form.image);
 
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        body: formData,
-      });
-      if (res.ok) {
+      const res = await axios.post("/api/quote", formData);
+      if (res.status === 200) {
         setSuccess("Your quote request has been submitted! We'll contact you soon.");
         setForm({ name: "", email: "", phone: "", details: "", image: null });
       } else {
-        const data = await res.json();
-        setError(data.error || "Something went wrong. Please try again.");
+        setError(res.data.error || "Something went wrong. Please try again.");
       }
-    } catch {
-      setError("Failed to submit. Please try again.");
+    } catch (err: any) {
+      setError(err.response?.data?.error || "Failed to submit. Please try again.");
     } finally {
       setLoading(false);
     }

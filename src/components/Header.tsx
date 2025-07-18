@@ -21,7 +21,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`${scrolled ? 'bg-white' : 'bg-[#fafafa]'} border-b border-[#ececec] sticky top-0 z-50 transition-colors duration-500 ease-in-out`}>
+    <header className={`${scrolled ? 'bg-white' : 'bg-[#fafafa]'} border-b border-[#ececec] sticky top-0 z-50 transition-colors duration-500 ease-in-out rounded-b-2xl`}>
       <div className={`max-w-[1600px] mx-auto flex items-center justify-between ${scrolled ? 'py-1.5 px-4' : 'py-3 px-4'} transition-all duration-500 ease-in-out`}>
         {/* Logo + Brand Name */}
         <Link href="/" className="flex items-center min-w-[220px] group" aria-label="Go to homepage">

@@ -145,6 +145,7 @@ const HomeProducts = () => {
                     showHoverEffects={true}
                     brandMap={brandMap}
                     categoryMap={categoryMap}
+                    subCategoryName={product.subCategory ? categoryMap[product.subCategory] : undefined}
                   />
                 </div>
               ))}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import axios from "axios";
 
 const API_URL = "https://trading-company-bcyf.vercel.app/api/suppliers";
 
@@ -93,11 +94,8 @@ export default function BecomeASupplierPage() {
       formData.append("message", form.message);
       formData.append("newsletterSubscribed", String(form.newsletterSubscribed));
       if (brochure) formData.append("brochure", brochure);
-      const res = await fetch(API_URL, {
-        method: "POST",
-        body: formData,
-      });
-      if (!res.ok) throw new Error("Submission failed");
+      const res = await axios.post(API_URL, formData);
+      if (res.status !== 201) throw new Error("Submission failed");
       setSuccess(true);
       setForm({
         firstName: "",

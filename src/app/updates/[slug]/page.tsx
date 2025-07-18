@@ -1,33 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import ContactSection from '../../../components/ContactSection';
-import { updatesApi } from '../../../services/api';
+import { blogsApi } from '../../../services/api';
 
-function generateSlug(title: string, id: string) {
-  return (
-    title
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-+|-+$/g, '') + '-' + id
-  );
-}
+export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  // Fetch all blogs and find by slug
+  const blogs = await blogsApi.getAll();
+  const blog = blogs.find(b => b.slug === slug);
 
-export async function generateStaticParams() {
-  const updates = await updatesApi.getAll();
-  console.log("Static params for updates:", updates);
-  return updates.map(update => ({ slug: generateSlug(update.title, update._id) }));
-}
-
-export default async function UpdateDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  // Find the update by custom slug
-  const updates = await updatesApi.getAll();
-  const update = updates.find((u: any) => generateSlug(u.title, u._id) === slug);
-
-  if (!update) {
+  if (!blog) {
     return (
       <main className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
         <div className="max-w-4xl mx-auto py-12 px-4">
@@ -37,8 +19,8 @@ export default async function UpdateDetailPage({ params }: { params: Promise<{ s
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
             </div>
-            <h1 className="text-3xl font-bold mb-4">Update Not Found</h1>
-            <p className="text-gray-600 mb-6">The update you're looking for doesn't exist or has been removed.</p>
+            <h1 className="text-3xl font-bold mb-4">Blog Not Found</h1>
+            <p className="text-gray-600 mb-6">The blog you're looking for doesn't exist or has been removed.</p>
             <Link href="/updates" className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
               Back to Updates
             </Link>
@@ -62,28 +44,28 @@ export default async function UpdateDetailPage({ params }: { params: Promise<{ s
               Updates
             </Link>
             <span className="text-gray-400">/</span>
-            <span className="text-gray-900 font-medium">{update.title}</span>
+            <span className="text-gray-900 font-medium">{blog.title}</span>
           </nav>
         </div>
       </section>
 
-      {/* Update Details */}
+      {/* Blog Details */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            {update.featuredImage && (
+            {blog.featuredImage && (
               <div className="w-full h-80 relative overflow-hidden">
-                <img src={update.featuredImage} alt={update.title} className="w-full h-full object-cover" />
+                <img src={blog.featuredImage} alt={blog.title} className="w-full h-full object-cover" />
               </div>
             )}
             <div className="p-8 lg:p-12">
               <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                {update.title}
+                {blog.title}
               </h1>
               <div className="mb-6 text-sm text-gray-500">
-                Published on {update.createdAt ? new Date(update.createdAt).toLocaleDateString() : 'Unknown date'}
+                Published on {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Unknown date'}
               </div>
-              <div className="prose max-w-none mb-8" dangerouslySetInnerHTML={{ __html: update.content || '' }} />
+              <div className="prose max-w-none mb-8" dangerouslySetInnerHTML={{ __html: blog.content || '' }} />
               <Link href="/updates" className="text-wingzimpex-brand hover:underline">Back to Updates</Link>
             </div>
           </div>

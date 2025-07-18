@@ -1,7 +1,9 @@
-export const dynamic = "force-static";
-import axios from 'axios';
-import ContactSection from '../../components/ContactSection';
-import BlogCard from '../../components/BlogCard';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ContactSection from "../../components/ContactSection";
+import BlogCard from "../../components/BlogCard";
 
 interface Blog {
   _id: string;
@@ -13,24 +15,28 @@ interface Blog {
   createdAt: string;
 }
 
-async function fetchBlogs(): Promise<Blog[]> {
-  try {
-    const res = await axios.get('https://trading-company-bcyf.vercel.app/api/blogs');
-    const data = res.data;
-    return Array.isArray(data) ? data.filter((b) => b.status === 'published') : [];
-  } catch (error) {
-    return [];
-  }
-}
+export default function UpdatesPage() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function UpdatesPage() {
-  const blogs = await fetchBlogs();
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const res = await axios.get("https://trading-company-bcyf.vercel.app/api/blogs");
+        const data = res.data;
+        setBlogs(Array.isArray(data) ? data.filter((b: Blog) => b.status === "published") : []);
+      } catch (error) {
+        setBlogs([]);
+      }
+      setLoading(false);
+    }
+    fetchBlogs();
+  }, []);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-wingzimpex-brand/5">
-      <section className="py-20" style={{ background: '#ede7de' }}>
+      <section className="py-20" style={{ background: "#ede7de" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header (styled like HomeProducts) */}
           <div className="text-center mb-16">
             <h2 className="font-bold mb-6 text-[#2d2d2d] text-[60px]">
               Company Updates & News
@@ -39,9 +45,11 @@ export default async function UpdatesPage() {
               Stay up to date with the latest company news, product launches, and important updates from our team.
             </p>
           </div>
-
-          {/* Updates Grid */}
-          {blogs.length === 0 ? (
+          {loading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+            </div>
+          ) : blogs.length === 0 ? (
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
                 <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -57,7 +65,7 @@ export default async function UpdatesPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogs.map((blog, index) => (
+              {blogs.map((blog) => (
                 <BlogCard key={blog._id} blog={blog} />
               ))}
             </div>

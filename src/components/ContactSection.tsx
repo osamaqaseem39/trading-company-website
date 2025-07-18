@@ -24,7 +24,8 @@ const ContactSection = () => (
               </div>
               <div>
                 <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Phone</h3>
-                <p style={{ color: '#2d2d2d' }}>92-345-8428889</p>
+                <a href="tel:+971505475200" style={{ color: '#2d2d2d', display: 'block' }}>+971 50 547 5200</a>
+                <a href="tel:+971545897355" style={{ color: '#2d2d2d', display: 'block' }}>+971 54 589 7355</a>
                 <p className="text-sm" style={{ color: '#2d2d2d' }}>Available 24/7 for emergency services</p>
               </div>
             </div>
@@ -36,7 +37,8 @@ const ContactSection = () => (
               </div>
               <div>
                 <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Email</h3>
-                <p style={{ color: '#2d2d2d' }}>info@wingzimpex.com</p>
+                <a href="mailto:abdul.razzaq@wingzimpex.com" style={{ color: '#2d2d2d', display: 'block' }}>abdul.razzaq@wingzimpex.com</a>
+                <a href="mailto:kashif.naseem@wingzimpex.com" style={{ color: '#2d2d2d', display: 'block' }}>kashif.naseem@wingzimpex.com</a>
                 <p className="text-sm" style={{ color: '#2d2d2d' }}>We&apos;ll respond within 24 hours</p>
               </div>
             </div>
@@ -48,9 +50,8 @@ const ContactSection = () => (
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Service Areas</h3>
-                <p style={{ color: '#2d2d2d' }}>Lahore, Islamabad, Rawalpindi, Karachi, Peshawar, Multan</p>
-                <p className="text-sm" style={{ color: '#2d2d2d' }}>Mobile service available</p>
+                <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Address</h3>
+                <p style={{ color: '#2d2d2d' }}>6009 Dubai, United Arab Emirates</p>
               </div>
             </div>
           </div>
@@ -59,10 +60,10 @@ const ContactSection = () => (
           <h3 className="text-xl font-bold mb-4">24/7 Support</h3>
           <p className="mb-4">Need urgent assistance? Our team is available 24/7 for critical food and beverage trading support and logistics emergencies.</p>
           <a 
-            href="tel:92-345-8428889" 
+            href="tel:+971505475200" 
             className="inline-block bg-white text-[#405a4d] px-6 py-3 rounded-lg font-semibold hover:bg-[#2d2d2d] hover:text-white transition-colors"
           >
-            Call Us: 92-345-8428889
+            Call Us: +971 50 547 5200
           </a>
         </div>
       </div>

@@ -13,6 +13,7 @@ interface ProductCardProps {
   showHoverEffects?: boolean;
   brandMap?: Record<string, string>;
   categoryMap?: Record<string, string>;
+  subCategoryName?: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -24,6 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showHoverEffects = true,
   brandMap = {},
   categoryMap = {},
+  subCategoryName,
 }) => {
   const slug = `${product.title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")}-${product._id}`;
   const imageUrl = getImageUrl(product.featuredImage, "products");
@@ -76,6 +78,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         )}
       </div>
 
+      {/* Divider */}
+      <hr className="border-t border-[#ede7de]" />
+
       {/* Product Info */}
       <div className="p-6">
         <h3 className={`text-xl font-bold text-[#2d2d2d] mb-1 ${showHoverEffects ? "group-hover:text-[#405a4d] transition-colors line-clamp-2" : "line-clamp-2"}`}>
@@ -85,9 +90,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="text-sm text-gray-600 mb-1 line-clamp-1">{product.description}</div>
         )}
         <div className="flex items-center gap-2 mb-2">
-          {product.category && (
-            <span className="inline-block bg-[#ede7de] text-[#405a4d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
-              {categoryMap[product.category] || 'Unknown Category'}
+          {subCategoryName && (
+            <span className="inline-block bg-[#e3ded6] text-[#2d2d2d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
+              {subCategoryName}
             </span>
           )}
           {product.brand && (
@@ -95,11 +100,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
               {brandMap[product.brand] || 'Unknown Brand'}
             </span>
           )}
+          {product.category && (
+            <span className="inline-block bg-[#ede7de] text-[#405a4d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
+              {categoryMap[product.category] || 'Unknown Category'}
+            </span>
+          )}
         </div>
         {/* Product Meta */}
         {showDate && (
           <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-            <span>Added {new Date(product.createdAt).toLocaleDateString()}</span>
+            <span>Added {new Date(product.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
           </div>
         )}
 
