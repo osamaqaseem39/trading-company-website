@@ -84,7 +84,29 @@ const CategoriesPage = () => {
               .sort((a, b) => (b.children?.length || 0) - (a.children?.length || 0))
               .flatMap(parent =>
                 (!parent.children || parent.children.length === 0)
-                  ? []
+                  ? [
+                      <div key={parent._id} className="mb-12">
+                        <a
+                          href={`/categories/${generateSlug(parent.name, parent._id)}`}
+                          className="flex items-center w-full px-8 py-8 hover:bg-[#e3ded6] transition group cursor-pointer"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <div className="w-16 h-16 rounded-full bg-[#d6d1c4] flex items-center justify-center mr-8 overflow-hidden">
+                            {parent.image ? (
+                              <img src={parent.image} alt={parent.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <span className="text-2xl text-[#2d2d2d] font-bold">{parent.name[0]}</span>
+                            )}
+                          </div>
+                          <span className="flex-1 text-2xl text-[#2d2d2d] font-semibold">{parent.name}</span>
+                          <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white group-hover:bg-[#2d2d2d] transition">
+                            <svg className="w-6 h-6 text-[#2d2d2d] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    ]
                   : parent.children.map((child: BaseCategory) => (
                       <div key={child._id} className="mb-12">
                         <a
