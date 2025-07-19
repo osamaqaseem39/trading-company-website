@@ -40,12 +40,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <h1 className="text-5xl font-bold text-white text-center">{subcategory.name}</h1>
       </header>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 text-center max-w-3xl mx-auto">
-          {subcategory.description && (
-            <p className="text-lg text-gray-700 mb-2">{subcategory.description}</p>
-          )}
-          <h2 className="text-2xl font-bold mb-8 text-[#405a4d] text-center">Products</h2>
-        </div>
+        {/* No description or heading here */}
         {products.length === 0 ? (
           <div className="text-center text-gray-500 py-16 flex flex-col items-center">
             <svg width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="mb-4 text-gray-300">
