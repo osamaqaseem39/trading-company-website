@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Category as BaseCategory, categoriesApi, productsApi } from "../../services/api";
+import { Category as BaseCategory, categoriesApi, productsApi, subcategoryApi } from "../../services/api";
 import ContactSection from "../../components/ContactSection";
 import CategoryProductList from "../../components/CategoryProductList";
 import axios from "axios";
@@ -11,7 +11,8 @@ import Link from 'next/link';
 const API_BASE_URL = 'https://adminserver.wingzimpex.com/api';
 
 const CategoriesPage = () => {
-  const [nestedCategories, setNestedCategories] = useState<any[]>([]);
+  const [parentCategories, setParentCategories] = useState<any[]>([]);
+  const [subcategories, setSubcategories] = useState<any[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Record<string, any[]>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,20 +21,20 @@ const CategoriesPage = () => {
     async function fetchData() {
       setLoading(true);
       try {
-        const nestedCats = await categoriesApi.getNested();
-        setNestedCategories(nestedCats);
-        // Fetch products for each category
+        const [allCategories, allSubcategories] = await Promise.all([
+          categoriesApi.getAll(),
+          subcategoryApi.getAll(),
+        ]);
+        // Parent categories: no parent field or parent === null
+        const parents = allCategories.filter((cat: any) => !cat.parent || cat.parent === null);
+        setParentCategories(parents);
+        setSubcategories(allSubcategories);
+        // Fetch products for each subcategory
         const productsByCategory: Record<string, any[]> = {};
         await Promise.all(
-          nestedCats.map(async (parent: any) => {
-            if (parent.children && parent.children.length > 0) {
-              await Promise.all(
-                parent.children.map(async (child: any) => {
-                  const products = await productsApi.getByCategory(child._id);
-                  productsByCategory[child._id] = products;
-                })
-              );
-            }
+          allSubcategories.map(async (subcat: any) => {
+            const products = await productsApi.getByCategory(subcat._id);
+            productsByCategory[subcat._id] = products;
           })
         );
         setCategoryProducts(productsByCategory);
@@ -52,7 +53,7 @@ const CategoriesPage = () => {
       name
         .toLowerCase()
         .trim()
-        .replace(/[^\w\s-]/g, '')
+        .replace(/[^ 0-9\w\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .replace(/^-+|-+$/g, '') + '-' + id
@@ -76,16 +77,15 @@ const CategoriesPage = () => {
       {/* Modern Category List UI */}
       <section className="w-full bg-[#ece7dd] py-24">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-          {/* Remove the single h1 here */}
           <div className="border-t border-b border-[#d6d1c4]">
-            {nestedCategories
-              .sort((a, b) => (b.children?.length || 0) - (a.children?.length || 0))
-              .map(parent => (
+            {parentCategories.map(parent => {
+              const children = subcategories.filter((sub: any) => sub.parent === parent._id);
+              return (
                 <div key={parent._id} className="mb-16">
                   <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">{parent.name}</h1>
-                  {parent.children && parent.children.length > 0 ? (
+                  {children.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                      {parent.children.map((child: BaseCategory) => (
+                      {children.map((child: BaseCategory) => (
                         <a
                           key={child._id}
                           href={`/subcategories/${generateSlug(child.name, child._id)}`}
@@ -112,7 +112,8 @@ const CategoriesPage = () => {
                     <div className="text-gray-500 italic">No subcategories.</div>
                   )}
                 </div>
-              ))}
+              );
+            })}
           </div>
         </div>
       </section>
