@@ -79,7 +79,7 @@ const CategoriesPage = () => {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
           <div className="border-t border-b border-[#d6d1c4]">
             {parentCategories.map(parent => {
-              const children = subcategories.filter((sub: any) => sub.parent === parent._id);
+              const children = subcategories.filter((sub: any) => sub.parent && sub.parent._id === parent._id);
               return (
                 <div key={parent._id} className="mb-16">
                   <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">{parent.name}</h1>
