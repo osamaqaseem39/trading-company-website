@@ -13,11 +13,17 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false); // NEW: mobile nav state
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile nav on route change
+  useEffect(() => {
+    setMobileOpen(false);
   }, []);
 
   return (
@@ -36,9 +42,19 @@ export default function Header() {
             <span className="block font-bold text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
           </div>
         </Link>
+        {/* Hamburger for mobile */}
+        <button
+          className="lg:hidden ml-2 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
+          aria-label="Open navigation menu"
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
         {/* Centered Navigation */}
         <nav className="flex-1 flex justify-center">
-          <ul className="flex gap-3">
+          <ul className="hidden lg:flex gap-3">
             {navLinks.map(link => (
               <li key={link.href}>
                 <Link
@@ -67,6 +83,56 @@ export default function Header() {
           </button>
         </div>
       </div>
+      {/* Mobile Nav Drawer */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-40" onClick={() => setMobileOpen(false)}>
+          <nav
+            className="absolute top-0 right-0 w-4/5 max-w-xs h-full bg-white shadow-lg p-8 flex flex-col gap-6 animate-slide-in"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              className="self-end mb-4 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
+              aria-label="Close navigation menu"
+              onClick={() => setMobileOpen(false)}
+            >
+              <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <ul className="flex flex-col gap-4">
+              {navLinks.map(link => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="block rounded-full bg-[#ede7de] text-[#2d2d2d] font-semibold text-lg px-6 py-3 transition-colors duration-150 hover:bg-[#e2d7c3] hover:text-[#2d2d2d] focus:bg-[#e2d7c3] focus:text-[#2d2d2d]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/contact"
+                  className="block bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-3 rounded-full text-lg transition-colors shadow"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
+      <style>{`
+        @keyframes slide-in {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
+        .animate-slide-in {
+          animation: slide-in 0.3s cubic-bezier(0.4,0,0.2,1) both;
+        }
+      `}</style>
     </header>
   );
 }

@@ -13,6 +13,7 @@ const HomeProducts = () => {
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
   const [categoriesData, setCategoriesData] = useState<any[]>([]); // <-- store categories
   const [categoriesList, setCategoriesList] = useState<{ id: string, name: string, count: number }[]>([]);
+  const [visibleCount, setVisibleCount] = useState(6); // NEW: controls how many products are shown
 
   useEffect(() => {
     async function fetchData() {
@@ -22,7 +23,7 @@ const HomeProducts = () => {
           brandsApi.getAll(),
           categoriesApi.getAll(),
         ]);
-        setProducts(products.slice(0, 6));
+        setProducts(products);
         setBrandMap(Object.fromEntries(brands.map((b: any) => [b._id, b.name])));
         setCategoryMap(Object.fromEntries(categories.map((c: any) => [c._id, c.name])));
         setCategoriesData(categories);
@@ -36,6 +37,11 @@ const HomeProducts = () => {
     }
     fetchData();
   }, []);
+
+  // Reset visibleCount when category changes
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [selectedCategory]);
 
   // Build categoriesList when products or categoriesData change
   useEffect(() => {
@@ -80,13 +86,6 @@ const HomeProducts = () => {
       (product.subCategory && subCategoryIds.includes(product.subCategory))
     );
   }, [products, selectedCategory, categoriesData]);
-
-  const categories = [
-    { id: 'all', name: 'All Products', count: products.length },
-    { id: 'compressor', name: 'Compressors', count: products.filter(p => p.title.toLowerCase().includes('compressor')).length },
-    { id: 'condenser', name: 'Condensers', count: products.filter(p => p.title.toLowerCase().includes('condenser')).length },
-    { id: 'evaporator', name: 'Evaporators', count: products.filter(p => p.title.toLowerCase().includes('evaporator')).length },
-  ];
 
 
 
@@ -134,7 +133,7 @@ const HomeProducts = () => {
         ) : filteredProducts.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {filteredProducts.map((product, index) => (
+              {filteredProducts.slice(0, visibleCount).map((product, index) => (
                 <div key={product._id} style={{ animationDelay: `${index * 100}ms` }}>
                   <ProductCard 
                     product={product} 
@@ -150,6 +149,21 @@ const HomeProducts = () => {
                 </div>
               ))}
             </div>
+
+            {/* Load More Button */}
+            {visibleCount < filteredProducts.length && (
+              <div className="text-center mb-8">
+                <button
+                  onClick={() => setVisibleCount(v => v + 6)}
+                  className="inline-flex items-center bg-[#405a4d] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
+                >
+                  Load More
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                </button>
+              </div>
+            )}
 
             {/* CTA Section */}
             <div className="text-center">
@@ -192,7 +206,7 @@ const HomeProducts = () => {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in-up {
           from {
             opacity: 0;

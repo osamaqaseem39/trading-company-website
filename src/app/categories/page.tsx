@@ -76,15 +76,13 @@ const CategoriesPage = () => {
       {/* Modern Category List UI */}
       <section className="w-full bg-[#ece7dd] py-24">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-          <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">
-            {nestedCategories.length > 0 ? nestedCategories[0].name : 'Categories'}
-          </h1>
+          {/* Remove the single h1 here */}
           <div className="border-t border-b border-[#d6d1c4]">
             {nestedCategories
               .sort((a, b) => (b.children?.length || 0) - (a.children?.length || 0))
               .map(parent => (
                 <div key={parent._id} className="mb-16">
-                  <h2 className="text-3xl font-bold text-[#2d2d2d] mb-6">{parent.name}</h2>
+                  <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">{parent.name}</h1>
                   {parent.children && parent.children.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                       {parent.children.map((child: BaseCategory) => (
