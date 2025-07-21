@@ -33,14 +33,28 @@ const Brands = ({ dark = false }: { dark?: boolean }) => {
           <h2 className={`font-bold mb-4 text-2xl sm:text-4xl md:text-5xl ${dark ? 'text-white' : 'text-[#2d2d2d]'}`}>Our Brands</h2>
           <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${dark ? 'text-white/80' : 'text-[#2d2d2d]'}`}>Genuine auto AC parts and components from trusted brands for optimal performance and reliability.</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-          {displayBrands.map((brand, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <img src={brand.image} alt={brand.name} className="h-16 w-auto mb-2" />
-              <span className={`text-lg font-semibold ${dark ? 'text-white' : 'text-gray-800'}`}>{brand.name}</span>
-            </div>
-          ))}
+        {/* Marquee Carousel */}
+        <div className="overflow-x-hidden w-full py-4">
+          <div className="flex items-center gap-12 animate-marquee whitespace-nowrap" style={{ animation: 'marquee 30s linear infinite' }}>
+            {displayBrands.concat(displayBrands).map((brand, idx) => (
+              <div key={idx} className="flex flex-col items-center min-w-[120px]">
+                <img src={brand.image} alt={brand.name} className="h-16 w-auto mb-2" />
+                <span className={`text-lg font-semibold ${dark ? 'text-white' : 'text-gray-800'}`}>{brand.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            will-change: transform;
+            display: flex;
+            min-width: 200%;
+          }
+        `}</style>
       </div>
     </section>
   );
