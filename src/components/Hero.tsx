@@ -20,20 +20,7 @@ export default function Hero() {
             <p className="mt-6 text-xl text-richCharcoal leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Wingz Impex connects you to the world’s finest food and beverage products. We specialize in sourcing, trading, and delivering high-quality goods to businesses worldwide, ensuring reliability, safety, and satisfaction in every shipment.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="/contact"
-                className="px-8 py-4 rounded-lg font-semibold text-lg shadow-lg bg-[#405a4d] text-white hover:bg-[#2e3e2c] transition-colors"
-              >
-                Get in Touch
-              </a>
-              <a
-                href="/products"
-                className="px-8 py-4 rounded-lg font-semibold text-lg bg-[#405a4d] text-white hover:bg-[#2e3e2c] transition-colors"
-              >
-                Our Products
-              </a>
-            </div>
+           
             {/* Trust Indicators */}
             <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-8">
               <div className="flex items-center space-x-2">
@@ -60,6 +47,20 @@ export default function Hero() {
                 </div>
                 <span className="text-richCharcoal font-medium">On-Time Delivery</span>
               </div>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="/contact"
+                className="px-8 py-4 rounded-lg font-semibold text-lg shadow-lg bg-[#405a4d] text-white hover:bg-[#2e3e2c] transition-colors"
+              >
+                Get in Touch
+              </a>
+              <a
+                href="/products"
+                className="px-8 py-4 rounded-lg font-semibold text-lg bg-[#405a4d] text-white hover:bg-[#2e3e2c] transition-colors"
+              >
+                Our Products
+              </a>
             </div>
           </div>
           {/* Right Visual with Masked Image */}

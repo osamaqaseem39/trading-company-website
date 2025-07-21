@@ -28,7 +28,7 @@ export default function Header() {
 
   return (
     <header className={`${scrolled ? 'bg-white' : 'bg-[#fafafa]'} border-b border-[#ececec] sticky top-0 z-50 transition-colors duration-500 ease-in-out rounded-b-2xl`}>
-      <div className={`max-w-[1600px] mx-auto flex items-center justify-between ${scrolled ? 'py-1.5 px-4' : 'py-3 px-4'} transition-all duration-500 ease-in-out`}>
+      <div className={`max-w-[1600px] mx-auto flex items-center ${scrolled ? 'py-1.5 px-4' : 'py-3 px-4'} transition-all duration-500 ease-in-out`}>
         {/* Logo + Brand Name */}
         <Link href="/" className="flex items-center min-w-[100px] group" aria-label="Go to homepage">
           <img
@@ -42,16 +42,20 @@ export default function Header() {
             <span className="block font-bold text-xl sm:text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
           </div>
         </Link>
-        {/* Hamburger for mobile */}
-        <button
-          className="lg:hidden ml-2 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
-          aria-label="Open navigation menu"
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        {/* Hamburger for mobile, right aligned */}
+        <div className="flex-1 flex justify-end lg:hidden">
+          <button
+            className="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
+            aria-label="Open navigation menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
         {/* Centered Navigation */}
         <nav className="flex-1 flex justify-center">
           <ul className="hidden lg:flex gap-3">
