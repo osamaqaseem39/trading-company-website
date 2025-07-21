@@ -7,6 +7,8 @@ export const metadata = {
   title: 'Wingz Impex | Food & Beverage Trading',
   icons: {
     icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
+    apple: '/images/favicon.ico',
   },
 };
 
