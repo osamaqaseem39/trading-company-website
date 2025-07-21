@@ -78,9 +78,16 @@ const CategoriesPage = () => {
       <section className="w-full bg-[#ece7dd] py-24">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
           <div className="border-t border-b border-[#d6d1c4]">
-            {parentCategories.map(parent => {
-              const children = subcategories.filter((sub: any) => sub.parent && sub.parent._id === parent._id);
-              return (
+            {parentCategories
+              .slice() // copy to avoid mutating state
+              .sort((a, b) => {
+                const aCount = subcategories.filter((sub: any) => sub.parent && sub.parent._id === a._id).length;
+                const bCount = subcategories.filter((sub: any) => sub.parent && sub.parent._id === b._id).length;
+                return bCount - aCount;
+              })
+              .map(parent => {
+                const children = subcategories.filter((sub: any) => sub.parent && sub.parent._id === parent._id);
+                return (
                 <div key={parent._id} className="mb-16">
                   <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">{parent.name}</h1>
                   {children.length > 0 ? (
