@@ -94,11 +94,12 @@ const HomeProducts = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-bold mb-6 text-[#2d2d2d] text-[60px]">
+          <h2 className="font-bold mb-6 text-[#2d2d2d] text-2xl sm:text-4xl md:text-5xl">
             Our Featured Products
           </h2>
-          <p className="text-xl text-[#2d2d2d] max-w-3xl mx-auto leading-relaxed">
-            Explore our curated selection of high-quality food items, beverages, and kitchen essentials from trusted brands.</p>
+          <p className="text-base sm:text-lg md:text-xl text-[#2d2d2d] max-w-3xl mx-auto leading-relaxed">
+            Explore our curated selection of high-quality food items, beverages, and kitchen essentials from trusted brands.
+          </p>
         </div>
 
         {/* Category Filters */}

@@ -16,9 +16,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description, image, imag
       <div className="absolute inset-0 bg-black/40 z-0" aria-hidden="true"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center text-center md:text-left" style={{zIndex: 2}}>
         <div className="flex-1 z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">{title}</h1>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">{title}</h1>
           {description && (
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed mb-6 drop-shadow-md">{description}</p>
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-6 drop-shadow-md">{description}</p>
           )}
           {children}
         </div>

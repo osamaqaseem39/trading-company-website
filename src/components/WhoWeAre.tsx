@@ -5,10 +5,10 @@ const WhoWeAre = () => (
     <div className="flex flex-col lg:flex-row gap-8 max-w-[1400px] w-full mx-auto">
       {/* Left Card */}
       <div className="flex-1 bg-[#46624a] rounded-3xl p-12 flex flex-col justify-center min-h-[800px]">
-        <h2 className="font-bold text-[#f7f2ea] mb-6" style={{ fontSize: '60px' }}>
+        <h2 className="font-bold text-[#f7f2ea] mb-6 text-2xl sm:text-4xl md:text-5xl">
           Who We Are
         </h2>
-        <p className="text-lg text-[#f7f2ea] mb-8 max-w-lg">
+        <p className="text-base sm:text-lg md:text-xl text-[#f7f2ea] mb-8 max-w-lg">
           Wingz Impex is a leading food and beverage trading company, connecting you to the world’s finest products. With a commitment to quality, reliability, and global reach, we serve businesses and partners across continents.
         </p>
         <a

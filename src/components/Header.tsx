@@ -68,7 +68,7 @@ export default function Header() {
           </ul>
         </nav>
         {/* Right Side: Contact & Search */}
-        <div className="flex items-center gap-3 min-w-[120px] justify-end">
+        <div className="hidden md:flex items-center gap-3 min-w-[120px] justify-end">
           <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ede7de] hover:bg-[#e2d7c3] transition-colors">
             <svg className="w-5 h-5 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="7" />

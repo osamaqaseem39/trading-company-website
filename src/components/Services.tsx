@@ -79,10 +79,10 @@ const Services = () => {
     <section className="py-20 bg-gradient-to-br from-gray-50 to-wingzimpex-brand/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="font-bold mb-6 text-[#2d2d2d]" style={{ fontSize: '60px' }}>
+          <h2 className="font-bold mb-6 text-[#2d2d2d] text-2xl sm:text-4xl md:text-5xl">
             Our Sectors
           </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-[#2d2d2d]">
+          <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-[#2d2d2d]">
             From food items to beverages and kitchen essentials, we serve a wide range of sectors with quality and reliability.
           </p>
         </div>

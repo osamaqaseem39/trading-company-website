@@ -4,8 +4,8 @@ import GetAQuoteForm from './GetAQuoteForm';
 const ContactSection = () => (
   <div className="max-w-7xl mx-auto py-12 px-4">
     <div className="text-center mb-12">
-      <h1 className="font-bold mb-6" style={{ fontSize: '60px', color: '#2d2d2d' }}>Contact Us</h1>
-      <p className="text-xl max-w-3xl mx-auto" style={{ color: '#2d2d2d' }}>
+      <h1 className="font-bold mb-6 text-2xl sm:text-4xl md:text-5xl" style={{ color: '#2d2d2d' }}>Contact Us</h1>
+      <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#2d2d2d' }}>
         Get in touch with us for professional auto AC services and genuine parts. We&apos;re here to help with all your automotive air conditioning needs.
       </p>
     </div>
