@@ -30,16 +30,16 @@ export default function Header() {
     <header className={`${scrolled ? 'bg-white' : 'bg-[#fafafa]'} border-b border-[#ececec] sticky top-0 z-50 transition-colors duration-500 ease-in-out rounded-b-2xl`}>
       <div className={`max-w-[1600px] mx-auto flex items-center justify-between ${scrolled ? 'py-1.5 px-4' : 'py-3 px-4'} transition-all duration-500 ease-in-out`}>
         {/* Logo + Brand Name */}
-        <Link href="/" className="flex items-center min-w-[220px] group" aria-label="Go to homepage">
+        <Link href="/" className="flex items-center min-w-[100px] group" aria-label="Go to homepage">
           <img
             src="/images/logo-menu.png"
             alt="Wingz Impex Logo"
-            width={scrolled ? 120 : 180}
-            height={scrolled ? 120 : 180}
-            className={`object-contain mr-3 transition-all duration-500 ease-in-out ${scrolled ? 'w-16 h-16' : 'w-24 h-24'} group-hover:opacity-80`}
+            width={120}
+            height={120}
+            className="object-contain mr-3 transition-all duration-500 ease-in-out w-10 h-10 sm:w-16 sm:h-16 group-hover:opacity-80"
           />
           <div>
-            <span className="block font-bold text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
+            <span className="block font-bold text-xl sm:text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
           </div>
         </Link>
         {/* Hamburger for mobile */}
@@ -69,18 +69,18 @@ export default function Header() {
         </nav>
         {/* Right Side: Contact & Search */}
         <div className="flex items-center gap-3 min-w-[120px] justify-end">
-          <Link
-            href="/contact"
-            className="bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-2 rounded-full text-base transition-colors shadow"
-          >
-            Contact
-          </Link>
           <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ede7de] hover:bg-[#e2d7c3] transition-colors">
             <svg className="w-5 h-5 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="7" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </button>
+          <Link
+            href="/contact"
+            className="bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-2 rounded-full text-base transition-colors shadow"
+          >
+            Contact
+          </Link>
         </div>
       </div>
       {/* Mobile Nav Drawer */}
@@ -90,6 +90,14 @@ export default function Header() {
             className="absolute top-0 right-0 w-4/5 max-w-xs h-full bg-white shadow-lg p-8 flex flex-col gap-6 animate-slide-in"
             onClick={e => e.stopPropagation()}
           >
+            {/* Search button at the top of mobile menu */}
+            <button className="w-full flex items-center justify-center rounded-full bg-[#ede7de] hover:bg-[#e2d7c3] text-[#49594b] font-semibold text-lg px-6 py-3 mb-4 transition-colors duration-150">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              Search
+            </button>
             <button
               className="self-end mb-4 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
               aria-label="Close navigation menu"
@@ -111,16 +119,15 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/contact"
-                  className="block bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-3 rounded-full text-lg transition-colors shadow"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Contact
-                </Link>
-              </li>
             </ul>
+            {/* Contact button at the bottom of mobile menu */}
+            <Link
+              href="/contact"
+              className="block mt-auto bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-3 rounded-full text-lg transition-colors shadow text-center"
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact
+            </Link>
           </nav>
         </div>
       )}

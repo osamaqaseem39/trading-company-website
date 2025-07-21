@@ -24,7 +24,7 @@ const CategoryStack: React.FC<CategoryStackProps> = ({ categories }) => {
         return (
           <section
             key={cat.title}
-            className={`flex w-[1600px] rounded-3xl overflow-hidden min-h-[350px] bg-[#ede7de] shadow-lg animate-fade-in-up${idx !== categories.length - 1 ? ' mb-8' : ''} self-center`}
+            className={`flex flex-col md:flex-row w-full max-w-[95vw] md:w-[900px] lg:w-[1200px] xl:w-[1600px] rounded-3xl overflow-hidden min-h-[350px] bg-[#ede7de] shadow-lg animate-fade-in-up${idx !== categories.length - 1 ? ' mb-8' : ''} self-center`}
             style={{
               position: "sticky",
               top: `${STICKY_HEADER_HEIGHT}px`, // Each card is higher than the previous
@@ -37,14 +37,14 @@ const CategoryStack: React.FC<CategoryStackProps> = ({ categories }) => {
             {/* Variant: image left or right */}
             {cat.variant === "left" ? (
               <>
-                <div className="w-1/2 h-full flex items-center justify-center bg-gray-200">
-                  <img src={cat.image} alt={cat.title} className="object-cover w-full h-full" />
+                <div className="w-full md:w-1/2 h-48 md:h-auto flex items-center justify-center bg-gray-200">
+                  <img src={cat.image} alt={cat.title} className="object-cover w-full h-full max-h-48 md:max-h-none" />
                 </div>
-                <div className="w-1/2 flex flex-col justify-center p-10">
-                  <h2 className="text-4xl font-bold mb-4 text-[#2d2d2d]">{cat.title}</h2>
-                  <p className="mb-6 text-lg text-[#2d2d2d]">{cat.description}</p>
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-6 md:p-10">
+                  <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-[#2d2d2d]">{cat.title}</h2>
+                  <p className="mb-4 md:mb-6 text-base md:text-lg text-[#2d2d2d]">{cat.description}</p>
                   {cat.buttonText && (
-                    <button className="px-6 py-3 rounded-full bg-[#405a4d] text-white font-semibold hover:bg-[#2e3e2c] transition w-48">
+                    <button className="px-4 py-2 md:px-6 md:py-3 rounded-full bg-[#405a4d] text-white font-semibold hover:bg-[#2e3e2c] transition w-full md:w-48">
                       {cat.buttonText}
                     </button>
                   )}
@@ -52,17 +52,17 @@ const CategoryStack: React.FC<CategoryStackProps> = ({ categories }) => {
               </>
             ) : (
               <>
-                <div className="w-1/2 flex flex-col justify-center p-10">
-                  <h2 className="text-4xl font-bold mb-4 text-[#2d2d2d]">{cat.title}</h2>
-                  <p className="mb-6 text-lg text-[#2d2d2d]">{cat.description}</p>
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-6 md:p-10">
+                  <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-[#2d2d2d]">{cat.title}</h2>
+                  <p className="mb-4 md:mb-6 text-base md:text-lg text-[#2d2d2d]">{cat.description}</p>
                   {cat.buttonText && (
-                    <button className="px-6 py-3 rounded-full bg-[#405a4d] text-white font-semibold hover:bg-[#2e3e2c] transition w-48">
+                    <button className="px-4 py-2 md:px-6 md:py-3 rounded-full bg-[#405a4d] text-white font-semibold hover:bg-[#2e3e2c] transition w-full md:w-48">
                       {cat.buttonText}
                     </button>
                   )}
                 </div>
-                <div className="w-1/2 h-full flex items-center justify-center bg-gray-200">
-                  <img src={cat.image} alt={cat.title} className="object-cover w-full h-full" />
+                <div className="w-full md:w-1/2 h-48 md:h-auto flex items-center justify-center bg-gray-200">
+                  <img src={cat.image} alt={cat.title} className="object-cover w-full h-full max-h-48 md:max-h-none" />
                 </div>
               </>
             )}
