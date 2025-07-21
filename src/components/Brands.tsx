@@ -1,9 +1,25 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { brandsApi } from '../services/api';
 
 const Brands = ({ dark = false }: { dark?: boolean }) => {
   const [brands, setBrands] = useState<any[]>([]);
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  // Touch drag logic
+  let startX = 0;
+  let scrollLeft = 0;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!marqueeRef.current) return;
+    marqueeRef.current.style.scrollBehavior = 'auto';
+    startX = e.touches[0].pageX - marqueeRef.current.offsetLeft;
+    scrollLeft = marqueeRef.current.scrollLeft;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!marqueeRef.current) return;
+    const x = e.touches[0].pageX - marqueeRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // scroll-fast
+    marqueeRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   useEffect(() => {
     async function fetchBrands() {
@@ -34,8 +50,13 @@ const Brands = ({ dark = false }: { dark?: boolean }) => {
           <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${dark ? 'text-white/80' : 'text-[#2d2d2d]'}`}>Genuine auto AC parts and components from trusted brands for optimal performance and reliability.</p>
         </div>
         {/* Marquee Carousel */}
-        <div className="overflow-x-hidden w-full py-4">
-          <div className="flex items-center gap-12 animate-marquee whitespace-nowrap" style={{ animation: 'marquee 30s linear infinite' }}>
+        <div
+          className="overflow-x-hidden w-full py-4 group"
+          ref={marqueeRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
+          <div className="flex items-center gap-12 animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]" style={{ animation: 'marquee 30s linear infinite' }}>
             {displayBrands.concat(displayBrands).map((brand, idx) => (
               <div key={idx} className="flex flex-col items-center min-w-[120px]">
                 <img src={brand.image} alt={brand.name} className="h-16 w-auto mb-2" />
