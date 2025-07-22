@@ -4,7 +4,7 @@ const WhoWeAre = () => (
   <section className="py-20 bg-[#f7f2ea] flex justify-center">
     <div className="flex flex-col lg:flex-row gap-8 max-w-[1400px] w-full mx-auto">
       {/* Left Card */}
-      <div className="flex-1 bg-[#46624a] rounded-3xl p-12 flex flex-col justify-center min-h-[800px]">
+      <div className="flex-1 bg-[#001a45] rounded-3xl p-12 flex flex-col justify-center min-h-[800px]">
         <h2 className="font-bold text-[#f7f2ea] mb-6 text-2xl sm:text-4xl md:text-5xl">
           Who We Are
         </h2>
@@ -13,7 +13,7 @@ const WhoWeAre = () => (
         </p>
         <a
           href="/about"
-          className="inline-block bg-white text-[#46624a] font-semibold px-8 py-3 rounded-full text-lg shadow hover:bg-[#e6e6e6] transition w-40 text-center"
+          className="inline-block bg-white text-[#001a45] font-semibold px-8 py-3 rounded-full text-lg shadow hover:bg-[#e6e6e6] transition w-40 text-center"
         >
           About Us
         </a>

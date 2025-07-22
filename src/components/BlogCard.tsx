@@ -63,7 +63,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         )}
       </div>
       {/* Divider */}
-      <hr className="border-t border-[#ede7de]" />
+      <hr className="border-t border-[#ededed]" />
       {/* Blog Info */}
       <div className="p-6 flex flex-col flex-1">
         <h2 className="text-2xl font-bold mb-2 line-clamp-2 group-hover:text-wingzimpex-brand transition-colors">
@@ -81,7 +81,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <span className="block mb-2 text-xs text-gray-400">{new Date(blog.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
         <Link
           href={`/blogs/${blog.slug}`}
-          className="mt-auto inline-block bg-[#405a4d] text-white px-5 py-2 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors text-center"
+          className="mt-auto inline-block bg-[#001a33] text-white px-5 py-2 rounded-lg font-semibold hover:bg-[#001a33] transition-colors text-center"
         >
           Read More
         </Link>

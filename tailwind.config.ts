@@ -13,7 +13,7 @@ module.exports = {
         oliveDrab: '#6B8E23',
         sandstone: '#D4C5A1',
         deepTeal: '#264E46',
-        richCharcoal: '#2D2D2D',
+        [#001a33]: '#001a33',
       },
     },
   },

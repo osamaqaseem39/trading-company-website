@@ -12,7 +12,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
 
   if (!blog) {
     return (
-      <main className="min-h-screen bg-[#ede7de]">
+      <main className="min-h-screen bg-[#ededed]">
         <div className="max-w-4xl mx-auto py-12 px-4">
           <div className="text-center">
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -32,7 +32,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
   }
 
   return (
-    <main className="min-h-screen bg-[#ede7de]">
+    <main className="min-h-screen bg-[#ededed]">
       {/* Breadcrumb */}
       <section className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

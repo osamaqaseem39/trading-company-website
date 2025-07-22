@@ -8,7 +8,7 @@ export const colors = {
     alt: 'deepTeal',
   },
   text: {
-    main: 'richCharcoal',
+    main: '[#001a33]',
     onPrimary: 'white',
   },
 };

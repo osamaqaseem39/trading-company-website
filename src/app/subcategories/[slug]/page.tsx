@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   if (!subcategory) {
     return (
-      <main className="min-h-screen bg-[#ede7de] flex items-center justify-center">
+      <main className="min-h-screen bg-[#ededed] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Subcategory Not Found</h1>
           <p className="text-lg">The subcategory you are looking for does not exist.</p>
@@ -34,9 +34,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const categoryMap = Object.fromEntries(categories.map((c: any) => [c._id, c.name]));
 
   return (
-    <main className="min-h-screen bg-[#ede7de] py-16">
+    <main className="min-h-screen bg-[#ededed] py-16">
       {/* Header with dark background and subcategory name */}
-      <header className="w-full bg-[#2d2d2d] py-16 mb-12">
+      <header className="w-full bg-[#001a33] py-16 mb-12">
         <h1 className="text-5xl font-bold text-white text-center">{subcategory.name}</h1>
       </header>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

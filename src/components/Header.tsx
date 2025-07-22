@@ -39,19 +39,19 @@ export default function Header() {
             className="object-contain mr-3 transition-all duration-500 ease-in-out w-10 h-10 sm:w-16 sm:h-16 group-hover:opacity-80"
           />
           <div>
-            <span className="block font-bold text-xl sm:text-4xl text-[#49594b] leading-tight">WINGZ IMPEX</span>
+            <span className="block font-bold text-xl sm:text-4xl text-[#001a33] leading-tight">WINGZ IMPEX</span>
           </div>
         </Link>
         {/* Hamburger for mobile, right aligned */}
         <div className="flex-1 flex justify-end lg:hidden">
           <button
-            className="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
+            className="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#001a33]"
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileOpen((v) => !v)}
           >
-            <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-[#001a33]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -63,7 +63,7 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="rounded-full bg-[#ede7de] text-[#2d2d2d] font-semibold text-base px-6 py-2 transition-colors duration-150 hover:bg-[#e2d7c3] hover:text-[#2d2d2d] focus:bg-[#e2d7c3] focus:text-[#2d2d2d]"
+                  className="rounded-full bg-[#ededed] text-[#001a33] font-semibold text-base px-6 py-2 transition-colors duration-150 hover:bg-[#e2d7c3] hover:text-[#001a33] focus:bg-[#e2d7c3] focus:text-[#001a33]"
                 >
                   {link.label}
                 </Link>
@@ -73,15 +73,15 @@ export default function Header() {
         </nav>
         {/* Right Side: Contact & Search */}
         <div className="hidden md:flex items-center gap-3 min-w-[120px] justify-end">
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ede7de] hover:bg-[#e2d7c3] transition-colors">
-            <svg className="w-5 h-5 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ededed] hover:bg-[#e2d7c3] transition-colors">
+            <svg className="w-5 h-5 text-[#001a33]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="7" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </button>
           <Link
             href="/contact"
-            className="bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-2 rounded-full text-base transition-colors shadow"
+            className="bg-[#001a33] hover:bg-[#001a33] text-white font-bold px-7 py-2 rounded-full text-base transition-colors shadow"
           >
             Contact
           </Link>
@@ -95,7 +95,7 @@ export default function Header() {
             onClick={e => e.stopPropagation()}
           >
             {/* Search button at the top of mobile menu */}
-            <button className="w-full flex items-center justify-center rounded-full bg-[#ede7de] hover:bg-[#e2d7c3] text-[#49594b] font-semibold text-lg px-6 py-3 mb-4 transition-colors duration-150">
+            <button className="w-full flex items-center justify-center rounded-full bg-[#ededed] hover:bg-[#e2d7c3] text-[#001a33] font-semibold text-lg px-6 py-3 mb-4 transition-colors duration-150">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="7" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -103,11 +103,11 @@ export default function Header() {
               Search
             </button>
             <button
-              className="self-end mb-4 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#405a4d]"
+              className="self-end mb-4 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#001a33]"
               aria-label="Close navigation menu"
               onClick={() => setMobileOpen(false)}
             >
-              <svg className="w-8 h-8 text-[#49594b]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-8 h-8 text-[#001a33]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -116,7 +116,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block rounded-full bg-[#ede7de] text-[#2d2d2d] font-semibold text-lg px-6 py-3 transition-colors duration-150 hover:bg-[#e2d7c3] hover:text-[#2d2d2d] focus:bg-[#e2d7c3] focus:text-[#2d2d2d]"
+                    className="block rounded-full bg-[#ededed] text-[#001a33] font-semibold text-lg px-6 py-3 transition-colors duration-150 hover:bg-[#e2d7c3] hover:text-[#001a33] focus:bg-[#e2d7c3] focus:text-[#001a33]"
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -127,7 +127,7 @@ export default function Header() {
             {/* Contact button at the bottom of mobile menu */}
             <Link
               href="/contact"
-              className="block mt-auto bg-[#405a4d] hover:bg-[#2e3e2c] text-white font-bold px-7 py-3 rounded-full text-lg transition-colors shadow text-center"
+              className="block mt-auto bg-[#001a33] hover:bg-[#001a33] text-white font-bold px-7 py-3 rounded-full text-lg transition-colors shadow text-center"
               onClick={() => setMobileOpen(false)}
             >
               Contact

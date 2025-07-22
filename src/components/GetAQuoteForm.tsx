@@ -147,7 +147,7 @@ const GetAQuoteForm: React.FC<GetAQuoteFormProps> = ({
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#405a4d] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors text-left mt-2"
+        className="w-full bg-[#001a33] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#001a33] transition-colors text-left mt-2"
       >
         {loading ? "Submitting..." : buttonText}
       </button>

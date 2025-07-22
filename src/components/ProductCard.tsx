@@ -39,8 +39,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   const baseClasses = showHoverEffects
-    ? "group bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-[#ede7de] hover:border-[#405a4d]"
-    : "bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-[#ede7de]";
+    ? "group bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-[#ededed] hover:border-[#001a33]"
+    : "bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-[#ededed]";
 
   const imageClasses = showHoverEffects
     ? "w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
@@ -79,11 +79,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Divider */}
-      <hr className="border-t border-[#ede7de]" />
+      <hr className="border-t border-[#ededed]" />
 
       {/* Product Info */}
       <div className="p-6">
-        <h3 className={`text-xl font-bold text-[#2d2d2d] mb-1 ${showHoverEffects ? "group-hover:text-[#405a4d] transition-colors line-clamp-2" : "line-clamp-2"}`}>
+        <h3 className={`text-xl font-bold text-[#001a33] mb-1 ${showHoverEffects ? "group-hover:text-[#001a33] transition-colors line-clamp-2" : "line-clamp-2"}`}>
           {product.title}
         </h3>
         {product.description && (
@@ -91,17 +91,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
         )}
         <div className="flex items-center gap-2 mb-2">
           {subCategoryName && (
-            <span className="inline-block bg-[#e3ded6] text-[#2d2d2d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
+            <span className="inline-block bg-[#e3ded6] text-[#001a33] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
               {subCategoryName}
             </span>
           )}
           {product.brand && (
-            <span className="inline-block bg-[#405a4d] text-white px-3 py-1 rounded-full text-xs font-semibold">
+            <span className="inline-block bg-[#001a33] text-white px-3 py-1 rounded-full text-xs font-semibold">
               {brandMap[product.brand] || 'Unknown Brand'}
             </span>
           )}
           {product.category && (
-            <span className="inline-block bg-[#ede7de] text-[#405a4d] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
+            <span className="inline-block bg-[#ededed] text-[#001a33] px-3 py-1 rounded-full text-xs font-semibold border border-[#d6d1c7]">
               {categoryMap[product.category] || 'Unknown Category'}
             </span>
           )}
@@ -116,7 +116,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* Action Buttons */}
         <Link
           href={`/products/${slug}`}
-          className="block w-full bg-[#405a4d] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors text-center mt-4"
+          className="block w-full bg-[#001a33] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#001a33] transition-colors text-center mt-4"
           tabIndex={0}
         >
           View Details

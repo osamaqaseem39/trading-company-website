@@ -62,7 +62,7 @@ const CategoriesPage = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-wingzimpex-brand/5">
-      <section className="relative bg-[#2d2d2d] text-white py-20 m-0 overflow-visible rounded-b-2xl" style={{ zIndex: 10 }}>
+      <section className="relative bg-[#001a33] text-white py-20 m-0 overflow-visible rounded-b-2xl" style={{ zIndex: 10 }}>
         {/* Overlay for contrast */}
         <div className="relative w-full px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 10 }}>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
@@ -89,7 +89,7 @@ const CategoriesPage = () => {
                 const children = subcategories.filter((sub: any) => sub.parent && sub.parent._id === parent._id);
                 return (
                 <div key={parent._id} className="mb-16">
-                  <h1 className="text-5xl font-bold text-center text-[#2d2d2d] mb-12">{parent.name}</h1>
+                  <h1 className="text-5xl font-bold text-center text-[#001a33] mb-12">{parent.name}</h1>
                   {children.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                       {children.map((child: BaseCategory) => (
@@ -103,12 +103,12 @@ const CategoriesPage = () => {
                             {child.image ? (
                               <img src={child.image} alt={child.name} className="w-full h-full object-cover" />
                             ) : (
-                              <span className="text-2xl text-[#2d2d2d] font-bold">{child.name[0]}</span>
+                              <span className="text-2xl text-[#001a33] font-bold">{child.name[0]}</span>
                             )}
                           </div>
-                          <span className="flex-1 text-2xl text-[#2d2d2d] font-semibold">{child.name}</span>
-                          <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white group-hover:bg-[#2d2d2d] transition">
-                            <svg className="w-6 h-6 text-[#2d2d2d] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <span className="flex-1 text-2xl text-[#001a33] font-semibold">{child.name}</span>
+                          <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white group-hover:bg-[#001a33] transition">
+                            <svg className="w-6 h-6 text-[#062373] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                           </span>

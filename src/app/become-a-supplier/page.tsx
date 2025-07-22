@@ -123,17 +123,17 @@ export default function BecomeASupplierPage() {
   };
 
   return (
-    <section className="py-20 bg-[#ede7de] flex justify-center">
+    <section className="py-20 bg-[#ededed] flex justify-center">
       <div className="flex flex-col lg:flex-row gap-8 max-w-[1400px] w-full mx-auto">
         {/* Supplier Image Card */}
-        <div className="flex-1 rounded-3xl overflow-hidden flex items-center justify-center min-h-[800px] relative bg-[#ede7de]">
+        <div className="flex-1 rounded-3xl overflow-hidden flex items-center justify-center min-h-[800px] relative bg-[#ededed]">
           <img
             src="/images/supplier.jpg"
             alt="Become a Supplier"
             className="object-cover w-full h-full absolute inset-0 z-0"
             style={{ objectPosition: 'center' }}
           />
-          <div className="relative z-10 bg-[#2d2d2d]/70 rounded-3xl p-12 flex flex-col justify-center items-center w-full h-full">
+          <div className="relative z-10 bg-[#001a33]/70 rounded-3xl p-12 flex flex-col justify-center items-center w-full h-full">
             <h2 className="font-bold text-white mb-6 text-center" style={{ fontSize: '60px' }}>
               Become a Supplier
             </h2>
@@ -149,64 +149,64 @@ export default function BecomeASupplierPage() {
           <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>First Name*</label>
-                <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="First Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="firstName" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>First Name*</label>
+                <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="First Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Last Name*</label>
-                <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Last Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="lastName" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Last Name*</label>
+                <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Last Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Email Address*</label>
-                <input id="email" name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="email" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Email Address*</label>
+                <input id="email" name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Phone Number*</label>
-                <input id="phone" name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone Number" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="phone" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Phone Number*</label>
+                <input id="phone" name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone Number" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
             </div>
             <div>
-              <label htmlFor="companyName" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Company Name*</label>
-              <input id="companyName" name="companyName" value={form.companyName} onChange={handleChange} required placeholder="Company Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+              <label htmlFor="companyName" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Company Name*</label>
+              <input id="companyName" name="companyName" value={form.companyName} onChange={handleChange} required placeholder="Company Name" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
             </div>
             <div>
-              <label htmlFor="jobTitle" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Job Title*</label>
-              <input id="jobTitle" name="jobTitle" value={form.jobTitle} onChange={handleChange} required placeholder="Job Title" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+              <label htmlFor="jobTitle" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Job Title*</label>
+              <input id="jobTitle" name="jobTitle" value={form.jobTitle} onChange={handleChange} required placeholder="Job Title" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="addressStreet" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Street Address*</label>
-                <input id="addressStreet" name="addressStreet" value={form.addressStreet} onChange={handleChange} required placeholder="Street Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="addressStreet" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Street Address*</label>
+                <input id="addressStreet" name="addressStreet" value={form.addressStreet} onChange={handleChange} required placeholder="Street Address" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
               <div>
-                <label htmlFor="addressCity" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>City*</label>
-                <input id="addressCity" name="addressCity" value={form.addressCity} onChange={handleChange} required placeholder="City" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="addressCity" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>City*</label>
+                <input id="addressCity" name="addressCity" value={form.addressCity} onChange={handleChange} required placeholder="City" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="addressZip" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>ZIP / Postal Code*</label>
-                <input id="addressZip" name="addressZip" value={form.addressZip} onChange={handleChange} required placeholder="ZIP / Postal Code" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="addressZip" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>ZIP / Postal Code*</label>
+                <input id="addressZip" name="addressZip" value={form.addressZip} onChange={handleChange} required placeholder="ZIP / Postal Code" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
               <div>
-                <label htmlFor="addressCountry" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Country*</label>
-                <input id="addressCountry" name="addressCountry" value={form.addressCountry} onChange={handleChange} required placeholder="Country" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+                <label htmlFor="addressCountry" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Country*</label>
+                <input id="addressCountry" name="addressCountry" value={form.addressCountry} onChange={handleChange} required placeholder="Country" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
               </div>
             </div>
             <div>
-              <label htmlFor="ingredientsSupplied" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>What ingredients do you supply?*</label>
-              <textarea id="ingredientsSupplied" name="ingredientsSupplied" value={form.ingredientsSupplied} onChange={handleChange} required placeholder="What ingredients do you supply?" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" rows={2} />
+              <label htmlFor="ingredientsSupplied" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>What ingredients do you supply?*</label>
+              <textarea id="ingredientsSupplied" name="ingredientsSupplied" value={form.ingredientsSupplied} onChange={handleChange} required placeholder="What ingredients do you supply?" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" rows={2} />
             </div>
             <div>
-              <label htmlFor="foodSafetyAccreditations" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Please confirm your food safety accreditation(s)*</label>
-              <textarea id="foodSafetyAccreditations" name="foodSafetyAccreditations" value={form.foodSafetyAccreditations} onChange={handleChange} required placeholder="Please confirm your food safety accreditation(s)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" rows={2} />
+              <label htmlFor="foodSafetyAccreditations" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Please confirm your food safety accreditation(s)*</label>
+              <textarea id="foodSafetyAccreditations" name="foodSafetyAccreditations" value={form.foodSafetyAccreditations} onChange={handleChange} required placeholder="Please confirm your food safety accreditation(s)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" rows={2} />
             </div>
             <div>
-              <label className="block font-medium mb-1" style={{ color: '#2d2d2d' }}>Brochure or Presentation Upload</label>
+              <label className="block font-medium mb-1" style={{ color: '#001a33' }}>Brochure or Presentation Upload</label>
               <div
-                className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer bg-gray-50 hover:bg-[#ede7de] transition mb-2 text-[#2d2d2d]"
+                className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer bg-gray-50 hover:bg-[#ededed] transition mb-2 text-[#001a33]"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
                 onClick={() => fileInputRef.current?.click()}
@@ -215,9 +215,9 @@ export default function BecomeASupplierPage() {
                 aria-label="Upload brochure or presentation"
               >
                 {brochure ? (
-                  <span className="font-medium text-[#2d2d2d]">{brochure.name}</span>
+                  <span className="font-medium text-[#001a33]">{brochure.name}</span>
                 ) : (
-                  <span className="text-[#2d2d2d]">Drag & drop or click to browse<br />No file chosen<br />Max. file size: 300 MB.</span>
+                  <span className="text-[#001a33]">Drag & drop or click to browse<br />No file chosen<br />Max. file size: 300 MB.</span>
                 )}
               </div>
               <input
@@ -230,19 +230,19 @@ export default function BecomeASupplierPage() {
               {uploadError && <div className="text-red-600 text-sm mt-1">{uploadError}</div>}
             </div>
             <div>
-              <label htmlFor="website" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Website</label>
-              <input id="website" name="website" value={form.website} onChange={handleChange} placeholder="Website (https://)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" />
+              <label htmlFor="website" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Website</label>
+              <input id="website" name="website" value={form.website} onChange={handleChange} placeholder="Website (https://)" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-1" style={{ color: '#2d2d2d' }}>Message*</label>
-              <textarea id="message" name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d2d2d] text-[#2d2d2d]" rows={3} />
+              <label htmlFor="message" className="block text-sm font-medium mb-1" style={{ color: '#001a33' }}>Message*</label>
+              <textarea id="message" name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#001a33] text-[#001a33]" rows={3} />
             </div>
             <div className="flex items-center">
               <input type="checkbox" id="newsletterSubscribed" name="newsletterSubscribed" checked={form.newsletterSubscribed} onChange={handleChange} className="mr-2" />
-              <label htmlFor="newsletterSubscribed" className="text-sm" style={{ color: '#2d2d2d' }}>Subscribe to our newsletter?</label>
+              <label htmlFor="newsletterSubscribed" className="text-sm" style={{ color: '#001a33' }}>Subscribe to our newsletter?</label>
             </div>
-            <div className="text-xs mb-2" style={{ color: '#2d2d2d' }}>By sending us your information, you agree to our Privacy Policy.</div>
-            <button type="submit" className="bg-[#2d2d2d] text-white px-8 py-3 rounded font-semibold hover:bg-[#405a4d] transition w-full mt-2" disabled={submitting}>{submitting ? "Submitting..." : "Submit"}</button>
+            <div className="text-xs mb-2" style={{ color: '#44b2aa' }}>By sending us your information, you agree to our Privacy Policy.</div>
+            <button type="submit" className="bg-[#2d2d2d] text-white px-8 py-3 rounded font-semibold hover:bg-[#001a33] transition w-full mt-2" disabled={submitting}>{submitting ? "Submitting..." : "Submit"}</button>
           </form>
         </div>
       </div>

@@ -51,7 +51,7 @@ export default function CategoryProductsClient({
             />
           </div>
         )}
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center text-[#405a4d]">{parentCategory.name}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center text-[#001a33]">{parentCategory.name}</h1>
         {parentCategory.description && (
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-2 text-center">
             {parentCategory.description}
@@ -63,11 +63,11 @@ export default function CategoryProductsClient({
       {subcategories.length > 0 && (
         <section className="py-8">
           <div className="max-w-5xl mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6 text-[#405a4d] text-center">Subcategories</h2>
+            <h2 className="text-2xl font-bold mb-6 text-[#001a33] text-center">Subcategories</h2>
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               <button
                 onClick={() => setSelectedSubcat('all')}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 ${selectedSubcat === 'all' ? 'border-wingzimpex-brand bg-wingzimpex-brand text-white' : 'border-gray-200 bg-white text-[#405a4d] hover:bg-[#ece7dd]'}`}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 ${selectedSubcat === 'all' ? 'border-wingzimpex-brand bg-wingzimpex-brand text-white' : 'border-gray-200 bg-white text-[#001a33] hover:bg-[#ece7dd]'}`}
               >
                 All
               </button>
@@ -75,7 +75,7 @@ export default function CategoryProductsClient({
                 <button
                   key={subcat._id}
                   onClick={() => setSelectedSubcat(subcat._id)}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 ${selectedSubcat === subcat._id ? 'border-wingzimpex-brand bg-wingzimpex-brand text-white' : 'border-gray-200 bg-white text-[#405a4d] hover:bg-[#ece7dd]'}`}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 ${selectedSubcat === subcat._id ? 'border-wingzimpex-brand bg-wingzimpex-brand text-white' : 'border-gray-200 bg-white text-[#001a33] hover:bg-[#ece7dd]'}`}
                 >
                   {subcat.name}
                 </button>
@@ -99,10 +99,10 @@ export default function CategoryProductsClient({
                     />
                   ) : (
                     <div className="w-[100px] h-[100px] rounded-full bg-[#ece7dd] flex items-center justify-center mb-4">
-                      <span className="text-3xl text-[#405a4d] font-bold">{subcat.name[0]}</span>
+                      <span className="text-3xl text-[#001a33] font-bold">{subcat.name[0]}</span>
                     </div>
                   )}
-                  <h3 className="text-lg font-semibold mb-2 text-[#405a4d] text-center">{subcat.name}</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-[#001a33] text-center">{subcat.name}</h3>
                   {subcat.description && (
                     <p className="text-gray-600 text-center text-sm line-clamp-2">{subcat.description}</p>
                   )}
@@ -116,7 +116,7 @@ export default function CategoryProductsClient({
       {/* Products */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-[#405a4d] text-center">Products</h2>
+          <h2 className="text-2xl font-bold mb-8 text-[#001a33] text-center">Products</h2>
           {filteredProducts.length === 0 ? (
             <div className="text-center text-gray-500 py-16 flex flex-col items-center">
               <svg width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="mb-4 text-gray-300">

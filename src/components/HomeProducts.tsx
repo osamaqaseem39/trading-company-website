@@ -90,14 +90,14 @@ const HomeProducts = () => {
 
 
   return (
-    <section className="py-20" style={{ background: '#ede7de' }}>
+    <section className="py-20" style={{ background: '#ededed' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-bold mb-6 text-[#2d2d2d] text-2xl sm:text-4xl md:text-5xl">
+          <h2 className="font-bold mb-6 text-[#001a33] text-2xl sm:text-4xl md:text-5xl">
             Our Featured Products
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-[#2d2d2d] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-[#001a33] max-w-3xl mx-auto leading-relaxed">
             Explore our curated selection of high-quality food items, beverages, and kitchen essentials from trusted brands.
           </p>
         </div>
@@ -110,13 +110,13 @@ const HomeProducts = () => {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
                 ${selectedCategory === category.id
-                  ? 'border-2 border-[#2d2d2d] font-bold bg-[#ede7de] text-[#2d2d2d]'
-                  : 'bg-[#ede7de] text-[#2d2d2d] border border-[#d6d1c7] hover:bg-[#e0dbd2]'}
+                  ? 'border-2 border-[#001a33] font-bold bg-[#ededed] text-[#001a33]'
+                  : 'bg-[#ededed] text-[#001a33] border border-[#d6d1c7] hover:bg-[#e0dbd2]'}
               `}
               style={{ minWidth: 120 }}
             >
               {category.name}
-              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${selectedCategory === category.id ? 'bg-[#2d2d2d] text-white' : 'bg-[#d6d1c7] text-[#2d2d2d]'}`}>
+              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${selectedCategory === category.id ? 'bg-[#001a33] text-white' : 'bg-[#d6d1c7] text-[#001a33]'}`}>
                 {category.count}
               </span>
             </button>
@@ -156,7 +156,7 @@ const HomeProducts = () => {
               <div className="text-center mb-8">
                 <button
                   onClick={() => setVisibleCount(v => v + 6)}
-                  className="inline-flex items-center bg-[#405a4d] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
+                  className="inline-flex items-center bg-[#001a33] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#001a33] transition-colors"
                 >
                   Load More
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,7 +170,7 @@ const HomeProducts = () => {
             <div className="text-center">
               <Link
                 href="/products"
-                className="inline-flex items-center bg-[#405a4d] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
+                className="inline-flex items-center bg-[#001a33] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#001a33] transition-colors"
               >
                 View All Products
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -197,7 +197,7 @@ const HomeProducts = () => {
               {selectedCategory !== 'all' && (
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className="bg-[#405a4d] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2d2d2d] transition-colors"
+                  className="bg-[#001a33] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#001a33] transition-colors"
                 >
                   View All Products
                 </button>

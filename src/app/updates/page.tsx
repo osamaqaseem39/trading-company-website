@@ -35,13 +35,13 @@ export default function UpdatesPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-wingzimpex-brand/5">
-      <section className="py-20" style={{ background: "#ede7de" }}>
+      <section className="py-20" style={{ background: "#ededed" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-bold mb-6 text-[#2d2d2d] text-[60px]">
+            <h2 className="font-bold mb-6 text-[#001a33] text-[60px]">
               Company Updates & News
             </h2>
-            <p className="text-xl text-[#2d2d2d] max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[#001a33] max-w-3xl mx-auto leading-relaxed">
               Stay up to date with the latest company news, product launches, and important updates from our team.
             </p>
           </div>

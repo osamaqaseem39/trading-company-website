@@ -26,7 +26,7 @@ const CategoryProductList: React.FC<CategoryProductListProps> = ({ products, cat
   const foodItemsCategory = categories.find(cat => cat.name.toLowerCase() === "food items");
 
   return (
-    <section className="w-full bg-[#ede7de] py-16 px-4 md:px-16">
+    <section className="w-full bg-[#ededed] py-16 px-4 md:px-16">
       <div className="w-full max-w-[1400px] mx-auto">
         {orderedCategories.map((cat) => {
           const subcategories = categories.filter(sub => sub.parent === cat._id);
@@ -45,7 +45,7 @@ const CategoryProductList: React.FC<CategoryProductListProps> = ({ products, cat
                     />
                   )}
                   <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#405a4d] mb-2">{cat.name}</h2>
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#001a33] mb-2">{cat.name}</h2>
                     {cat.description && (
                       <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-2">{cat.description}</p>
                     )}
@@ -64,16 +64,16 @@ const CategoryProductList: React.FC<CategoryProductListProps> = ({ products, cat
                         }
                         return (
                           <div key={subcat._id} className="flex items-center px-1 md:px-2 py-2 md:py-2 hover:bg-[#f7f2ea] transition group cursor-pointer">
-                            <div className="w-16 h-16 rounded-full bg-[#ede7de] flex items-center justify-center mr-6 overflow-hidden">
+                            <div className="w-16 h-16 rounded-full bg-[#ededed] flex items-center justify-center mr-6 overflow-hidden">
                               {image ? (
                                 <img src={image} alt={subcat.name} className="w-12 h-12 object-cover rounded-full" />
                               ) : (
-                                <span className="text-2xl text-[#405a4d] font-bold">{subcat.name[0]}</span>
+                                <span className="text-2xl text-[#001a33] font-bold">{subcat.name[0]}</span>
                               )}
                             </div>
-                            <span className="flex-1 text-xl text-[#405a4d] font-medium">{subcat.name}</span>
-                            <span className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ede7de] group-hover:bg-[#405a4d] transition">
-                              <svg className="w-6 h-6 text-[#405a4d] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <span className="flex-1 text-xl text-[#001a33] font-medium">{subcat.name}</span>
+                            <span className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ededed] group-hover:bg-[#001a33] transition">
+                              <svg className="w-6 h-6 text-[#001a33] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                               </svg>
                             </span>
@@ -86,16 +86,16 @@ const CategoryProductList: React.FC<CategoryProductListProps> = ({ products, cat
                           key={product._id}
                           className="flex items-center px-1 md:px-2 py-2 md:py-2 hover:bg-[#f7f2ea] transition group"
                         >
-                          <div className="w-16 h-16 rounded-full bg-[#ede7de] flex items-center justify-center mr-6 overflow-hidden">
+                          <div className="w-16 h-16 rounded-full bg-[#ededed] flex items-center justify-center mr-6 overflow-hidden">
                             {product.featuredImage ? (
                               <img src={product.featuredImage} alt={product.title} className="w-12 h-12 object-cover rounded-full" />
                             ) : (
-                              <span className="text-2xl text-[#405a4d] font-bold">{product.title[0]}</span>
+                              <span className="text-2xl text-[#001a33] font-bold">{product.title[0]}</span>
                             )}
                           </div>
-                          <span className="flex-1 text-xl text-[#405a4d] font-medium">{product.title}</span>
-                          <span className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ede7de] group-hover:bg-[#405a4d] transition">
-                            <svg className="w-6 h-6 text-[#405a4d] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <span className="flex-1 text-xl text-[#001a33] font-medium">{product.title}</span>
+                          <span className="w-10 h-10 flex items-center justify-center rounded-full bg-[#ededed] group-hover:bg-[#001a33] transition">
+                            <svg className="w-6 h-6 text-[#001a33] group-hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                           </span>

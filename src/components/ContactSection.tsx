@@ -4,8 +4,8 @@ import GetAQuoteForm from './GetAQuoteForm';
 const ContactSection = () => (
   <div className="max-w-7xl mx-auto py-12 px-4">
     <div className="text-center mb-12">
-      <h1 className="font-bold mb-6 text-2xl sm:text-4xl md:text-5xl" style={{ color: '#2d2d2d' }}>Contact Us</h1>
-      <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#2d2d2d' }}>
+      <h1 className="font-bold mb-6 text-2xl sm:text-4xl md:text-5xl" style={{ color: '#001a33' }}>Contact Us</h1>
+      <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#001a33' }}>
         Get in touch with us for professional auto AC services and genuine parts. We&apos;re here to help with all your automotive air conditioning needs.
       </p>
     </div>
@@ -14,7 +14,7 @@ const ContactSection = () => (
       {/* Contact Information */}
       <div className="space-y-8">
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: '#2d2d2d' }}>Get in Touch</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#001a33' }}>Get in Touch</h2>
           <div className="space-y-6">
             <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-wingzimpex-brand/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -23,10 +23,10 @@ const ContactSection = () => (
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Phone</h3>
-                <a href="tel:+971505475200" style={{ color: '#2d2d2d', display: 'block' }}>+971 50 547 5200</a>
-                <a href="tel:+971545897355" style={{ color: '#2d2d2d', display: 'block' }}>+971 54 589 7355</a>
-                <p className="text-sm" style={{ color: '#2d2d2d' }}>Available 24/7 for emergency services</p>
+                <h3 className="font-semibold" style={{ color: '#001a33' }}>Phone</h3>
+                <a href="tel:+971505475200" style={{ color: '#001a33', display: 'block' }}>+971 50 547 5200</a>
+                <a href="tel:+971545897355" style={{ color: '#001a33', display: 'block' }}>+971 54 589 7355</a>
+                <p className="text-sm" style={{ color: '#001a33' }}>Available 24/7 for emergency services</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -36,10 +36,10 @@ const ContactSection = () => (
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Email</h3>
-                <a href="mailto:abdul.razzaq@wingzimpex.com" style={{ color: '#2d2d2d', display: 'block' }}>abdul.razzaq@wingzimpex.com</a>
-                <a href="mailto:kashif.naseem@wingzimpex.com" style={{ color: '#2d2d2d', display: 'block' }}>kashif.naseem@wingzimpex.com</a>
-                <p className="text-sm" style={{ color: '#2d2d2d' }}>We&apos;ll respond within 24 hours</p>
+                <h3 className="font-semibold" style={{ color: '#001a33' }}>Email</h3>
+                <a href="mailto:abdul.razzaq@wingzimpex.com" style={{ color: '#001a33', display: 'block' }}>abdul.razzaq@wingzimpex.com</a>
+                <a href="mailto:kashif.naseem@wingzimpex.com" style={{ color: '#001a33', display: 'block' }}>kashif.naseem@wingzimpex.com</a>
+                <p className="text-sm" style={{ color: '#001a33' }}>We&apos;ll respond within 24 hours</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -50,18 +50,18 @@ const ContactSection = () => (
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold" style={{ color: '#2d2d2d' }}>Address</h3>
-                <p style={{ color: '#2d2d2d' }}>6009 Dubai, United Arab Emirates</p>
+                <h3 className="font-semibold" style={{ color: '#001a33' }}>Address</h3>
+                <p style={{ color: '#001a33' }}>6009 Dubai, United Arab Emirates</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-[#405a4d] rounded-xl p-8 text-white">
+        <div className="bg-[#001a33] rounded-xl p-8 text-white">
           <h3 className="text-xl font-bold mb-4">24/7 Support</h3>
           <p className="mb-4">Need urgent assistance? Our team is available 24/7 for critical food and beverage trading support and logistics emergencies.</p>
           <a 
             href="tel:+971505475200" 
-            className="inline-block bg-white text-[#405a4d] px-6 py-3 rounded-lg font-semibold hover:bg-[#2d2d2d] hover:text-white transition-colors"
+            className="inline-block bg-white text-[#001a33] px-6 py-3 rounded-lg font-semibold hover:bg-[#001a33] hover:text-white transition-colors"
           >
             Call Us: +971 50 547 5200
           </a>

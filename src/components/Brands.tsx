@@ -46,8 +46,8 @@ const Brands = ({ dark = false }: { dark?: boolean }) => {
     <section className={dark ? "py-20" : "py-20 bg-gray-50"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className={`font-bold mb-4 text-2xl sm:text-4xl md:text-5xl ${dark ? 'text-white' : 'text-[#2d2d2d]'}`}>Our Brands</h2>
-          <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${dark ? 'text-white/80' : 'text-[#2d2d2d]'}`}>Genuine auto AC parts and components from trusted brands for optimal performance and reliability.</p>
+          <h2 className={`font-bold mb-4 text-2xl sm:text-4xl md:text-5xl ${dark ? 'text-white' : 'text-[#001a33]'}`}>Our Brands</h2>
+          <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${dark ? 'text-white/80' : 'text-[#001a33]'}`}>Genuine auto AC parts and components from trusted brands for optimal performance and reliability.</p>
         </div>
         {/* Marquee Carousel */}
         <div

@@ -28,10 +28,10 @@ const WhyChooseUs = () => (
   <section className="py-16 bg-white">
     <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h2 className="font-bold mb-6 text-[#2d2d2d] text-2xl sm:text-4xl md:text-5xl">
+        <h2 className="font-bold mb-6 text-[#001a33] text-2xl sm:text-4xl md:text-5xl">
           Why Choose Wingz Impex?
         </h2>
-        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-[#2d2d2d]">
+        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-[#001a33]">
           We are your trusted partner in food and beverage trading—delivering quality, reliability, and global reach to help your business thrive.
         </p>
       </div>
@@ -39,14 +39,14 @@ const WhyChooseUs = () => (
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className={`rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.03] ${idx === 1 ? 'bg-[#2d2d2d] text-white' : 'bg-[#ede7de]'} text-left`}
+            className={`rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.03] ${idx === 1 ? 'bg-[#001a33] text-white' : 'bg-[#ededed]'} text-left`}
           >
             <div className="w-full h-48">
               {React.cloneElement(feature.icon, { className: 'w-full h-full object-cover rounded-t-3xl' })}
             </div>
             <div className="p-8">
-              <h3 className={`text-2xl font-bold mb-3 ${idx === 1 ? 'text-white' : 'text-[#2d2d2d]'}`}>{feature.title}</h3>
-              <p className={`text-lg ${idx === 1 ? 'text-white/90' : 'text-[#2d2d2d]'}`}>{feature.desc}</p>
+              <h3 className={`text-2xl font-bold mb-3 ${idx === 1 ? 'text-white' : 'text-[#001a33]'}`}>{feature.title}</h3>
+              <p className={`text-lg ${idx === 1 ? 'text-white/90' : 'text-[#001a33]'}`}>{feature.desc}</p>
             </div>
           </div>
         ))}
