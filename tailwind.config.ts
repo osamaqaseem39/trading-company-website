@@ -11,9 +11,9 @@ module.exports = {
       colors: {
         emeraldPine: '#003E29',
         oliveDrab: '#6B8E23',
-        sandstone: '#D4C5A1',
+        sandstone: '#ededed',
         deepTeal: '#264E46',
-        [#001a33]: '#001a33',
+        brandDark: '#001a33',
       },
     },
   },
